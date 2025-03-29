@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import logo from './assets/RetroGit.png'
 import { getUser } from './API/API'
 import { useNavigate } from 'react-router-dom'
+import './Style.css'
 
 function Home() {
     const [user, setUser] = useState("")
@@ -22,17 +23,9 @@ function Home() {
 
     return(
         <>
-            <div style={{
-                            height: '100%',
-                            width: '100%',
-                            textAlign: 'center',
-                            minHeight: '100vh',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center'
-                        }} >
-                <img src={logo} />
-                <h1 style={{color:"white", textAlign: 'center'}}>Retrospecgit</h1>
+            <div className="App">
+                <img src={logo}/>
+                <h1>Retrospecgit</h1>
                 <div>
                     <input 
                         type="text" 
