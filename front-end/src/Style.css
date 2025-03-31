@@ -1,0 +1,47 @@
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #0d1117;
+}
+
+#logo {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+h1 {
+    color: rgb(248, 245, 245); 
+}.search-container {
+    margin-top: 30px;
+}
+  
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    margin-right: 10px;
+}
+  
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #f9faf9; 
+    border: none; 
+    color: rgb(5, 5, 5); 
+}
+  
+button:hover {
+    background-color: #565656; 
+    color: rgb(248, 245, 245)
+}
+
+.App {
+    text-align: center;
+    padding: 150px;
+    background-size: cover;
+    background-position: center; 
+    background-attachment: fixed; 
+    color: rgb(248, 248, 248);
+}
+  
