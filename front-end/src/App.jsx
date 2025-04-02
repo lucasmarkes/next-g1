@@ -1,12 +1,15 @@
+import { UserProvider } from "./Context/UserContext.jsx"
 import Router from "./router/index.jsx"
+
 
 function App() {
  
 
   return (
-    <Router/>
-
-
+    
+    <UserProvider>
+      <Router/>
+    </UserProvider>
     
   )
 }

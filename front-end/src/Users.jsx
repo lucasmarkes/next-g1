@@ -1,16 +1,22 @@
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
+import { useUser } from "./Context/UserContext"
 
 function Users() {
     const location = useLocation()
 
-    const data = location.state?.response
-    console.log(data)
+    const navigate = useNavigate()
+
+    const {userData} = useUser()
+
+    //const data = location.state?.response
+    //console.log(userRepos)
 
     return(
         <div>
-            <img src ={data.avatar_url}/>
-            <h1>{data.name}</h1>
-            <p>{data.bio}</p>
+            <img src ={userData.avatar_url}/>
+            <h1>{userData.name}</h1>
+            <p>{userData.bio}</p>
+            <button onClick={() => navigate("/repos")}>Repositorio</button>
         </div>
         
     )
