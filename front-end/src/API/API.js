@@ -6,3 +6,12 @@ export const getUser = async (user) => {
         console.log(error)
     }
 }
+
+export const getRepos = async (user) => {
+    try { 
+        const data = await fetch(`https://api.github.com/users/${user}/repos`)
+        return data.json()
+    } catch (error) {
+        console.log(error)
+    }
+}
