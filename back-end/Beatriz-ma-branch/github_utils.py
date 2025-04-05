@@ -1,4 +1,5 @@
 import os
+from typing import Dict
 from fastapi import HTTPException
 import requests
 from dotenv import load_dotenv
@@ -6,9 +7,17 @@ from datetime import datetime
 from models_github import GithubStats, LinguagemStats, RepoRequest
 from fpdf import FPDF
 
+
 load_dotenv()
 TOKEN = os.getenv("GITHUB_TOKEN")
-HEADERS = {"Authorization": f"token {TOKEN}"}
+HEADERS = {
+    "Authorization": f"Bearer {TOKEN}",
+    "Accept": "application/vnd.github+json"
+}
+
+
+#Estatísticas do USUÁRIO
+
 
 def buscar_estatisticas(usuario: str) -> GithubStats:
     user_url = f"https://api.github.com/users/{usuario}"
@@ -28,10 +37,31 @@ def buscar_estatisticas(usuario: str) -> GithubStats:
     total_prs_closed = 0
     total_linguagens = {}
 
+    owner = usuario
+
+    # Verificar se a resposta dos repositórios é válida
+    if not isinstance(repos, list):
+        print("Erro ao buscar repositórios:", repos_resp.status_code, repos)
+        return GithubStats(
+            nome=user.get("name", "N/A"),
+            login=user.get("login", "N/A"),
+            localizacao=user.get("location", "N/A"),
+            criado_em=datetime.strptime(user["created_at"], "%Y-%m-%dT%H:%M:%SZ").strftime('%d/%m/%Y'),
+            seguidores=user.get("followers", 0),
+            public_repos=user.get("public_repos", 0),
+            commits=0,
+            prs_abertas=0,
+            prs_fechadas=0,
+            branches=0,
+            estrelas=0,
+            forks=0,
+            linguagens=[],
+            avatar_url=user.get("avatar_url", "")
+        )
+
     for repo in repos:
         repo_name = repo["name"]
-        owner = repo["owner"]["login"]
-
+    
         # Commits (até 100)
         commits_url = f"https://api.github.com/repos/{owner}/{repo_name}/commits?per_page=100"
         commits_resp = requests.get(commits_url, headers=HEADERS)
@@ -101,11 +131,50 @@ def baixar_avatar(url, caminho="avatar.png"):
     return None
 
 
+#Estatísticas do REPOSITÓRIO
+
+
 def get_github_data(owner: str, repo: str, endpoint: str = ""):
     url = f"https://api.github.com/repos/{owner}/{repo}{endpoint}"
     response = requests.get(url, headers=HEADERS)
     return response.json()
 
+def info_repositorio(owner: str, repo: str) -> Dict:
+    # Dados do repositório
+    repo_data = get_github_data(owner, repo)
+    stars = repo_data.get("stargazers_count", 0)
+    forks = repo_data.get("forks_count", 0)
+    watchers = repo_data.get("watchers_count", 0)
+    size_kb = repo_data.get("size", 0)
+    updated_at = repo_data.get("updated_at", "")
+
+    # Contribuidores
+    contributors = get_github_data(owner, repo, "/contributors")
+    top_contributors = [
+        f"- {contrib['login']} ({contrib.get('contributions', 0)} commits)"
+        for contrib in contributors[:10]
+    ]
+
+    # Linguagens
+    languages = get_github_data(owner, repo, "/languages")
+    language_lines = [
+        f"- {lang}: {lines} linhas"
+        for lang, lines in languages.items()
+    ]
+
+    # Resposta formatada
+    return {
+        "Estrelas": stars,
+        "Forks": forks,
+        "Watchers": watchers,
+        "Tamanho": f"{size_kb} KB",
+        "Última atualização": updated_at,
+        "Top 10 Contribuidores": top_contributors,
+        "Linguagens Utilizadas": language_lines
+    }
+
+
+# Gráfico de commits por repositórios do USUÁRIO
 
 
 def coletar_commits_por_repositorio(usuario: str):
@@ -131,6 +200,10 @@ def coletar_commits_por_repositorio(usuario: str):
             print(f"Erro ao coletar commits de {repo_name}: {commits_resp.status_code}")
 
     return commits_por_repo
+
+
+# Gráfico de commits por data do REPOSITÓRIO 
+
 
 def get_commit_count(request: RepoRequest):
     url = f"https://api.github.com/repos/{request.owner}/{request.repo}/commits"
