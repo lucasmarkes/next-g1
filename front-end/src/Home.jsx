@@ -29,18 +29,21 @@ function Home() {
         <>
             <div className="App">
                 <img src={logo} />
-                <h1>Retrospecgit</h1>
-                <div>
+                <h1 style={{color: '#64027c'}}>Retrospecgit</h1>
+                <h1>
                     <input
                         type="text"
                         placeholder="Digite o nome do usário"
                         value={user}
+                        class='search-container'
                         onChange={(e => setUser(e.target.value))} />
+                </h1>
+                <h1>    
                     <button
                         onClick={handleSearch}
                         disabled={user.length === 0}>Busca</button>
 
-                </div>
+                </h1>
 
             </div>
         </>
