@@ -2,33 +2,50 @@ html, body, #root {
     height: 100%;
     margin: 0;
     padding: 0;
-    /*background: #0d1117;*/
+    background: #fcfcfc;
 }
 
 #logo {
-    max-width: 200px;
-    margin-bottom: 20px;
+    width: 355px;
+    height: 243px;
+    top: 198px;
+    left: 542px;
 }
 h1 {
     color: rgb(248, 245, 245); 
+    
 }.search-container {
-    margin-top: 30px;
+    width: 320px;
+    height: 40px;
+    top: 462px;
+    left: 540px;
+    border-radius: 28px;
+    gap: 4px;
+    text-align: center;
+    background-color: #f6effa;
+    border-color: #f6effa;
+    
 }
-  
-input[type="text"] {
-    padding: 10px;
-    font-size: 16px;
+.barra-lateral{
     width: 300px;
-    margin-right: 10px;
-}
+    height: 1024px;
+    color: #64027c;
+} 
+
   
 button {
-    padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #f9faf9; 
+    color: #f9faf9; 
     border: none; 
-    color: rgb(5, 5, 5); 
+    background-color: #63027C;
+    width: 100px; 
+    height: 30px;
+    top: 540px;
+    left: 670px;
+    border-radius: 200px;
+    gap: 200px;
+
 }
   
 button:hover {
@@ -43,5 +60,19 @@ button:hover {
     background-position: center; 
     background-attachment: fixed; 
     color: rgb(248, 248, 248);
+}
+
+p {
+    color:#f9faf9
+
+}.language{
+    color: #f9faf9;
+    background-color: #08022b;
+}
+.texto-lateral{
+    weight: 700;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
 }
   
