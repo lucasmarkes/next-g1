@@ -70,7 +70,7 @@ p {
     background-color: #08022b;
 }
 .texto-lateral{
-    weight: 700;
+    font-weight: 700;
     font-size: 12px;
     text-align: center;
     vertical-align: middle;
