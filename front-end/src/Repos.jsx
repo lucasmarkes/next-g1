@@ -8,7 +8,7 @@ function Repos() {
     const navigate = useNavigate()
 
     return(
-        <div style={{backgroundColor: 'white'}}>
+        <div style={{backgroundColor: 'red', color: 'black'}}>
             <ul>
                 {userRepos.map(
                     (repo) => (

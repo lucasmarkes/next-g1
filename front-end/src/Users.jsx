@@ -1,10 +1,15 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import { useUser } from "./Context/UserContext"
 import './Style.css'
+import { Layout } from "antd";
 
 
-function Users() {
-    const location = useLocation()
+
+const { Content } = Layout;
+
+
+ function Users() {
+    //const location = useLocation()
 
     const navigate = useNavigate()
 
@@ -26,26 +31,148 @@ function Users() {
     //console.log(userRepos)
 
     return(
-        <div>
-            <img src ={userData.avatar_url}/>
-            <h1>{userData.name}</h1>
-            <p>{userData.bio}</p>
-            <p>{userData.public_repos}</p>
-            <p className="language">
-                <ul>
-                    {languages.map(
-                        (lang, index) => (
-                            <li key={index}>
-                                {lang}
-                            </li>
-                        )
-                        
-                    )}
-                </ul>
-            </p>
-            <button onClick={() => navigate("/repos")}>Repositorio</button>
-        </div>
+       
+        //<Layout style={{ marginLeft: 200 }}>
+        // <Content
+        //     style={{
+        //     //padding: "24px",
+        //     overflowY: "auto",
+        //     height: "100vh",
+        //     background: "#f5f5f5",
+        //     display: "flex",
+        //     flexDirection: "column",
+        //     alignItems: "center",
+        //     gap: "50px",
+        //     }}
+        // >
         
+        //     <div style={{ alignSelf: "flex-start", marginLeft: "80px" }}>
+        //     <h1 className="texto-roxo"> Título gráfico 1</h1>
+        //     </div>
+
+        //     <div
+        //     style={{
+        //         background: "rgba(217, 217, 217, 1)",
+        //         minHeight: "292px",
+        //         width: "950px",
+        //         display: "flex",
+        //         justifyContent: "center",
+        //         alignItems: "center",
+        //         borderRadius: "10px",
+        //         marginTop: "-50px",
+        //     }}
+        //     ></div>
+
+        //     <div style={{ alignSelf: "flex-start", marginLeft: "80px" }}>
+        //     <h1 className="texto-roxo">Estatísticas do Usuário</h1>
+        //     </div>
+
+           
+        //     <div
+        //     style={{
+        //         background: "rgba(217, 217, 217, 1)",
+        //         minHeight: "200px",
+        //         width: "950px",
+        //         display: "flex",
+        //         justifyContent: "space-around",
+        //         alignItems: "center",
+        //         borderRadius: "10px",
+        //         marginTop: "-50px",
+        //         padding: "20px"
+        //     }}
+        //     >
+        //     <div className="container-flex">
+        //         <div className="caixa"></div>
+        //         <p className="titulo">Repo</p>
+        //     </div>
+        //     <div className="container-flex">
+        //         <div className="caixa"></div>
+        //         <p className="titulo">Followers</p>
+        //     </div>
+        //     <div className="container-flex">
+        //         <div className="caixa"></div>
+        //         <p className="titulo">Forks</p>
+        //     </div>
+        //     <div className="container-flex">
+        //         <div className="caixa"></div>
+        //         <p className="titulo">Commits</p>
+        //     </div>
+        //     </div>
+
+        //     <div style={{ alignSelf: "flex-start", marginLeft: "80px" }}>
+        //     <h1 className="texto-roxo">Linguagens usadas</h1>
+        //     </div>
+            
+        //     <div
+        //     style={{
+        //         background: "rgba(217, 217, 217, 1)",
+        //         minHeight: "150px",
+        //         width: "500px",
+        //         display: "flex",
+        //         justifyContent:"space-around" ,
+        //         alignItems: "center",
+        //         borderRadius: "10px",
+        //         marginTop: "-50px",
+        //         padding: "20px",
+        //         gap: "20px", 
+        //         flexWrap: "wrap", 
+        //         marginLeft: "-450px"
+        //     }}
+        //     >
+        //     <div className="container-flex">
+        //         <div className="circulo" st></div>
+        //     </div>
+        //     <div className="container-flex">
+        //         <div className="circulo"></div>
+        //     </div>
+        //     <div className="container-flex">
+        //         <div className="circulo"></div>
+        //     </div>
+        //     <div className="container-flex">
+        //         <div className="circulo"></div>
+        //     </div>
+        //     </div>
+        
+
+
+    
+        // </Content>
+        //</Layout>
+        
+        <div style={{display: 'flex',flexDirection: 'column', padding: '16px', color: 'black', gap: 16}}>
+            <div>
+                <h2 style={{color: '#63027C'}}>Estatística do Usuário</h2>
+                <div style={{display: 'grid', backgroundColor: '#d9d9d9', gridTemplateColumns:'repeat(4,1fr)', gap: 8, padding: 8 }}>
+                   <p>Repos</p>
+                   <p>Followers</p>
+                   <p>Forks</p>
+                   <p>Commits</p>
+                   <p>Follows</p>
+                   <p>Stars</p>
+                   <p>Branches</p>
+                   <p>PRs</p> 
+                </div>
+            </div>
+
+            <div style={{maxHeight:'500px' ,backgroundColor: 'red', display: 'flex', justifyContent: 'space-between', padding: 16, gap: 8}}>
+                <div style={{width: '50%', gap: 8}}>
+                    <div style={{maxHeight: '340px', border: '1px solid blue'}}>
+                        <h2>Título do Gráfico 2</h2>
+                        <div>Grafico de Bia</div>
+                    </div>
+                    
+                    <div style={{maxHeight: '160px', border: '1px solid orange'}}>
+                        <h2>Linguagem Usadas</h2>
+                        <div>Linguagens de Bia</div>
+                    </div>
+                </div>
+                <div style={{maxHeight: '500px', border: '1px solid white', width: '50%'}}>
+                    <h2>Lista Repositórios</h2>
+                </div>
+
+            </div>
+        </div>
+ 
     )
 
 }

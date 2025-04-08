@@ -41,7 +41,7 @@ function Home() {
                 <h1>    
                     <button
                         onClick={handleSearch}
-                        disabled={user.length === 0}>Busca</button>
+                        disabled={user.length === 0}>Buscar</button>
 
                 </h1>
 
