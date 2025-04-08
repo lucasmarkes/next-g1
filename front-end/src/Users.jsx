@@ -1,16 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import { useUser } from "./Context/UserContext"
 import './Style.css'
-import { Menu, Layout } from "antd";
-import {
-    UserOutlined,
-    FolderOutlined,
-    FilePdfOutlined,
-    ArrowLeftOutlined
-} from "@ant-design/icons";
+import { Layout } from "antd";
 
 
-const { Sider, Content } = Layout;
+
+const { Content } = Layout;
 
 
  function Users() {
@@ -36,170 +31,148 @@ const { Sider, Content } = Layout;
     //console.log(userRepos)
 
     return(
-       <Layout style={{ minHeight: "100vh" }}>
-        <Sider
-        width={200}
-        style={{
-            backgroundColor: "rgba(100, 2, 124, 1)",
-            position: "fixed",
-            height: "100vh",
-            left: 0,
-        }}
-        >
-        <div style={{ color: "white", textAlign: "center", padding: "20px" }}>
-            <img
-            src={userData.avatar_url}
-            alt="Avatar"
-            style={{
-                width: "115px",
-                height: "115px",
-                borderRadius: "50%",
-                border: "5px solid rgba(0,0,0,1)",
-                background: "#fff",
-                padding: "8px",
-                boxShadow: "0 0 20px rgba(0,0,0,1)",
-            }}
-            />
-            <h1 style={{ fontSize: "16px", marginTop: 18 }}>{userData.name}</h1>
-            <p>Localidade</p>
-        </div>
-
-        <Menu
-            className="custom-menu"
-            theme="dark"
-            mode="inline"
-            defaultSelectedKeys={["1"]}
-            style={{
-            marginTop: "20px",
-            backgroundColor: "rgba(100, 2, 124, 1)",
-            }}
-        >
-            <Menu.Item key="1" icon={<UserOutlined />} onClick={() => navigate("/user")}>
-            Perfil
-            </Menu.Item>
-            <Menu.Item key="2" icon={<FolderOutlined />} onClick={() => navigate("/repos")}>
-            Repositórios
-            </Menu.Item>
-            <Menu.Item key="3" icon={<FilePdfOutlined />}>Exportar PDF</Menu.Item>
-            <Menu.Item
-            key="4"
-            icon={<ArrowLeftOutlined />}
-            onClick={() => navigate("/")}
-            style={{ marginTop: "200px" }}
-            >
-            Nova busca
-            </Menu.Item>
-        </Menu>
-        </Sider>
-
-
-        <Layout style={{ marginLeft: 200 }}>
-        <Content
-            style={{
-            padding: "24px",
-            overflowY: "auto",
-            height: "100vh",
-            background: "#f5f5f5",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "50px",
-            }}
-        >
+       
+        //<Layout style={{ marginLeft: 200 }}>
+        // <Content
+        //     style={{
+        //     //padding: "24px",
+        //     overflowY: "auto",
+        //     height: "100vh",
+        //     background: "#f5f5f5",
+        //     display: "flex",
+        //     flexDirection: "column",
+        //     alignItems: "center",
+        //     gap: "50px",
+        //     }}
+        // >
         
-            <div style={{ alignSelf: "flex-start", marginLeft: "80px" }}>
-            <h1 className="texto-roxo"> Título gráfico 1</h1>
-            </div>
+        //     <div style={{ alignSelf: "flex-start", marginLeft: "80px" }}>
+        //     <h1 className="texto-roxo"> Título gráfico 1</h1>
+        //     </div>
 
-            <div
-            style={{
-                background: "rgba(217, 217, 217, 1)",
-                minHeight: "292px",
-                width: "950px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: "10px",
-                marginTop: "-50px",
-            }}
-            ></div>
+        //     <div
+        //     style={{
+        //         background: "rgba(217, 217, 217, 1)",
+        //         minHeight: "292px",
+        //         width: "950px",
+        //         display: "flex",
+        //         justifyContent: "center",
+        //         alignItems: "center",
+        //         borderRadius: "10px",
+        //         marginTop: "-50px",
+        //     }}
+        //     ></div>
 
-            <div style={{ alignSelf: "flex-start", marginLeft: "80px" }}>
-            <h1 className="texto-roxo">Estatísticas do Usuário</h1>
-            </div>
+        //     <div style={{ alignSelf: "flex-start", marginLeft: "80px" }}>
+        //     <h1 className="texto-roxo">Estatísticas do Usuário</h1>
+        //     </div>
 
            
-            <div
-            style={{
-                background: "rgba(217, 217, 217, 1)",
-                minHeight: "200px",
-                width: "950px",
-                display: "flex",
-                justifyContent: "space-around",
-                alignItems: "center",
-                borderRadius: "10px",
-                marginTop: "-50px",
-                padding: "20px"
-            }}
-            >
-            <div className="container-flex">
-                <div className="caixa"></div>
-                <p className="titulo">Repo</p>
-            </div>
-            <div className="container-flex">
-                <div className="caixa"></div>
-                <p className="titulo">Followers</p>
-            </div>
-            <div className="container-flex">
-                <div className="caixa"></div>
-                <p className="titulo">Forks</p>
-            </div>
-            <div className="container-flex">
-                <div className="caixa"></div>
-                <p className="titulo">Commits</p>
-            </div>
-            </div>
+        //     <div
+        //     style={{
+        //         background: "rgba(217, 217, 217, 1)",
+        //         minHeight: "200px",
+        //         width: "950px",
+        //         display: "flex",
+        //         justifyContent: "space-around",
+        //         alignItems: "center",
+        //         borderRadius: "10px",
+        //         marginTop: "-50px",
+        //         padding: "20px"
+        //     }}
+        //     >
+        //     <div className="container-flex">
+        //         <div className="caixa"></div>
+        //         <p className="titulo">Repo</p>
+        //     </div>
+        //     <div className="container-flex">
+        //         <div className="caixa"></div>
+        //         <p className="titulo">Followers</p>
+        //     </div>
+        //     <div className="container-flex">
+        //         <div className="caixa"></div>
+        //         <p className="titulo">Forks</p>
+        //     </div>
+        //     <div className="container-flex">
+        //         <div className="caixa"></div>
+        //         <p className="titulo">Commits</p>
+        //     </div>
+        //     </div>
 
-            <div style={{ alignSelf: "flex-start", marginLeft: "80px" }}>
-            <h1 className="texto-roxo">Linguagens usadas</h1>
-            </div>
+        //     <div style={{ alignSelf: "flex-start", marginLeft: "80px" }}>
+        //     <h1 className="texto-roxo">Linguagens usadas</h1>
+        //     </div>
             
-            <div
-            style={{
-                background: "rgba(217, 217, 217, 1)",
-                minHeight: "150px",
-                width: "500px",
-                display: "flex",
-                justifyContent:"space-around" ,
-                alignItems: "center",
-                borderRadius: "10px",
-                marginTop: "-50px",
-                padding: "20px",
-                gap: "20px", 
-                flexWrap: "wrap", 
-                marginLeft: "-450px"
-            }}
-            >
-            <div className="container-flex">
-                <div className="circulo" st></div>
-            </div>
-            <div className="container-flex">
-                <div className="circulo"></div>
-            </div>
-            <div className="container-flex">
-                <div className="circulo"></div>
-            </div>
-            <div className="container-flex">
-                <div className="circulo"></div>
-            </div>
-            </div>
+        //     <div
+        //     style={{
+        //         background: "rgba(217, 217, 217, 1)",
+        //         minHeight: "150px",
+        //         width: "500px",
+        //         display: "flex",
+        //         justifyContent:"space-around" ,
+        //         alignItems: "center",
+        //         borderRadius: "10px",
+        //         marginTop: "-50px",
+        //         padding: "20px",
+        //         gap: "20px", 
+        //         flexWrap: "wrap", 
+        //         marginLeft: "-450px"
+        //     }}
+        //     >
+        //     <div className="container-flex">
+        //         <div className="circulo" st></div>
+        //     </div>
+        //     <div className="container-flex">
+        //         <div className="circulo"></div>
+        //     </div>
+        //     <div className="container-flex">
+        //         <div className="circulo"></div>
+        //     </div>
+        //     <div className="container-flex">
+        //         <div className="circulo"></div>
+        //     </div>
+        //     </div>
         
 
 
     
-        </Content>
-        </Layout>
-  </Layout>
+        // </Content>
+        //</Layout>
+        
+        <div style={{display: 'flex',flexDirection: 'column', padding: '16px', color: 'black', gap: 16}}>
+            <div>
+                <h2 style={{color: '#63027C'}}>Estatística do Usuário</h2>
+                <div style={{display: 'grid', backgroundColor: '#d9d9d9', gridTemplateColumns:'repeat(4,1fr)', gap: 8, padding: 8 }}>
+                   <p>Repos</p>
+                   <p>Followers</p>
+                   <p>Forks</p>
+                   <p>Commits</p>
+                   <p>Follows</p>
+                   <p>Stars</p>
+                   <p>Branches</p>
+                   <p>PRs</p> 
+                </div>
+            </div>
+
+            <div style={{maxHeight:'500px' ,backgroundColor: 'red', display: 'flex', justifyContent: 'space-between', padding: 16, gap: 8}}>
+                <div style={{width: '50%', gap: 8}}>
+                    <div style={{maxHeight: '340px', border: '1px solid blue'}}>
+                        <h2>Título do Gráfico 2</h2>
+                        <div>Grafico de Bia</div>
+                    </div>
+                    
+                    <div style={{maxHeight: '160px', border: '1px solid orange'}}>
+                        <h2>Linguagem Usadas</h2>
+                        <div>Linguagens de Bia</div>
+                    </div>
+                </div>
+                <div style={{maxHeight: '500px', border: '1px solid white', width: '50%'}}>
+                    <h2>Lista Repositórios</h2>
+                </div>
+
+            </div>
+        </div>
+ 
     )
 
 }
