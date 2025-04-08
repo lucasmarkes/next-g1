@@ -139,10 +139,10 @@ const { Content } = Layout;
         // </Content>
         //</Layout>
         
-        <div style={{display: 'flex',flexDirection: 'column', padding: '16px', color: 'black', gap: 16}}>
+        <div className="user">
             <div>
-                <h2 style={{color: '#63027C'}}>Estatística do Usuário</h2>
-                <div style={{display: 'grid', backgroundColor: '#d9d9d9', gridTemplateColumns:'repeat(4,1fr)', gap: 8, padding: 8 }}>
+                <h2 className="statistics-title-user">Estatística do Usuário</h2>
+                <div className="summary-user">
                    <p>Repos</p>
                    <p>Followers</p>
                    <p>Forks</p>
@@ -154,20 +154,31 @@ const { Content } = Layout;
                 </div>
             </div>
 
-            <div style={{maxHeight:'500px' ,backgroundColor: 'red', display: 'flex', justifyContent: 'space-between', padding: 16, gap: 8}}>
-                <div style={{width: '50%', gap: 8}}>
-                    <div style={{maxHeight: '340px', border: '1px solid blue'}}>
+            <div className="statistics-user">
+                <div className="grafics-user">
+                    <div className="grafics1-user">
                         <h2>Título do Gráfico 2</h2>
-                        <div>Grafico de Bia</div>
+                        <div className="grafics3-user">Grafico de Bia</div>
                     </div>
                     
-                    <div style={{maxHeight: '160px', border: '1px solid orange'}}>
+                    <div className="grafics2-user">
                         <h2>Linguagem Usadas</h2>
-                        <div>Linguagens de Bia</div>
+                        <div className="languages-user">Linguagens de Bia</div>
                     </div>
                 </div>
-                <div style={{maxHeight: '500px', border: '1px solid white', width: '50%'}}>
+                <div className="repo-user">
                     <h2>Lista Repositórios</h2>
+                    <div className="list-repos-user">
+                        <ul>
+                            {userRepos.map(
+                                (repo) => (
+                                    <li style={{color: 'black'}} key={repo.id}>
+                                        <p>{repo.name}</p>
+                                    </li>
+                                )
+                            )}
+                        </ul>
+                    </div>
                 </div>
 
             </div>

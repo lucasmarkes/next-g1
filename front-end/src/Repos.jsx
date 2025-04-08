@@ -8,16 +8,19 @@ function Repos() {
     const navigate = useNavigate()
 
     return(
-        <div style={{backgroundColor: 'red', color: 'black'}}>
-            <ul>
-                {userRepos.map(
-                    (repo) => (
-                        <li style={{color: 'black'}} key={repo.id}>
-                            <p>{repo.name}</p>
-                        </li>
-                    )
-                )}
-            </ul>
+        <div className="repos">
+            <h1 className="title-repo">Lista de Repositórios</h1>
+                <div className="list-repo">
+                    <ul>
+                        {userRepos.map(
+                            (repo) => (
+                                <li style={{color: 'black'}} key={repo.id}>
+                                    <p>{repo.name}</p>
+                                </li>
+                            )
+                        )}
+                    </ul>
+                </div>
         </div>
     )
 
