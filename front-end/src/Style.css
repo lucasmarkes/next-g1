@@ -141,17 +141,20 @@ p {
 
 
 h2{
+  color: black;
 
 }
 .user-sidebar{
   font-size: 1rem;
   text-align: center;
+  color: white
 }
 .statistics-title-user{
   color: #63027C;
 }
 
 div{
+  color: black;
 
 }.sidebar{
   width: 300px;
@@ -250,6 +253,7 @@ div{
 }
 
 h1{
+  color: black;
 
 } 
 .title-repo{
@@ -263,6 +267,7 @@ h1{
 } 
 
 img {
+  color: black;
 
 }
 .img-sidebar{

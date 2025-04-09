@@ -3,6 +3,7 @@ import Home from '../Home'
 import Users from '../Users'
 import Repos from '../Repos'
 import Layout from '../Layout'
+import StatisticRepo from '../StatisticRepo'
 
 function Router() {
     return(
@@ -12,6 +13,7 @@ function Router() {
                 <Route path='/user' element = {<Layout/>}>
                     <Route index element={<Users/>}/>
                     <Route path='repos' element={<Repos/>}/>
+                    <Route path='repo/:id' element={<StatisticRepo/>}/>
                 </Route>
                 
             </Routes>

@@ -4,6 +4,13 @@ WORKDIR /app
 
 COPY requirements.txt .
 COPY app.py .
+COPY github_utils.py .
+COPY models_github.py .
+COPY pdf_repo_gerar.py .
+COPY pdf_user_gerar.py .
+COPY user_graph_commits.py .
+COPY repo_graph_commits.py .
+COPY .env .
 
 RUN pip install --no-cache-dir -r requirements.txt
 

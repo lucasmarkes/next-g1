@@ -14,7 +14,7 @@ function Repos() {
                     <ul>
                         {userRepos.map(
                             (repo) => (
-                                <li style={{color: 'black'}} key={repo.id}>
+                                <li onClick={() => navigate(`/user/repo/${repo.name}`)} style={{color: 'black'}} key={repo.id}>
                                     <p>{repo.name}</p>
                                 </li>
                             )
