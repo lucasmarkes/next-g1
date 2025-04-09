@@ -4,6 +4,7 @@ import './Style.css'
 import { Layout } from "antd";
 import { getUserStatistics } from "./API/API";
 import { useEffect, useState } from "react";
+import Loading from "./assets/Loading.webp"
 
 
 
@@ -31,7 +32,7 @@ const { Content } = Layout;
     }, [])
 
     if (load){
-        return <p>Carregando</p>
+        return <img src={Loading} width="200" height="200"/>
     }
           
     return(
