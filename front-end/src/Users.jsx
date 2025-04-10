@@ -5,7 +5,7 @@ import { Layout } from "antd";
 import { getUserGraphCommits, getUserStatistics } from "./API/API";
 import { useEffect, useState } from "react";
 import Loading from "./assets/Loading.webp";
-import circulo from "./assets/circulo.jpg"
+
 
 
 
