@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 import os
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from github_utils import buscar_estatisticas
+from github_utils import buscar_estatisticas, get_github_data
 from models_github import GithubStats, RepoRequest
 from repo_graph_commits import repo_graph_commits_date
 from user_graph_commits import user_graph_commits_repos
