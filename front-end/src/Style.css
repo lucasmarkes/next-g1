@@ -157,7 +157,7 @@ div{
   color: black;
 
 }.sidebar{
-  width: 300px;
+  width: 180px;
   background-color: #4B006E;
   color: white;
   padding: 2rem 1rem;
@@ -208,7 +208,6 @@ div{
 .grafics2-user{
   max-height: 160px;
   
-  
 }
 
 .grafics3-user{
@@ -232,6 +231,7 @@ div{
   gap: 8px;
   overflow-y: auto;
   max-height: 355px;
+  width: 375px;
 }
 
 .repos{

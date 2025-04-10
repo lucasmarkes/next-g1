@@ -20,12 +20,15 @@ function StatisticRepo(){
             }
             getData()
         }, [])
-
+  
+    
     return(
         <div>
             <h1>{id}</h1>
             <img src={graphic}/>
+            
         </div>
+        
     )
 
 }
