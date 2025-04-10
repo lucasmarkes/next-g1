@@ -2,3 +2,6 @@ fastapi
 uvicorn
 requests
 matplotlib
+fpdf
+dotenv
+pydantic

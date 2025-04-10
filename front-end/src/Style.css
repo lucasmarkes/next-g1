@@ -75,6 +75,11 @@ p {
     text-align: center;
     vertical-align: middle;
 }
+.local-sidebar{
+  font-size: 0.875rem;
+  color: #ccc;
+  margin-bottom: 2rem; 
+}
   
 /* Estilo para o menu */
 .custom-menu .ant-menu-item {
@@ -132,5 +137,142 @@ p {
     background-color:rgb(116, 110, 110);
     border-radius: 50px;
   }
-
   
+
+
+h2{
+  color: black;
+
+}
+.user-sidebar{
+  font-size: 1rem;
+  text-align: center;
+  color: white
+}
+.statistics-title-user{
+  color: #63027C;
+}
+
+div{
+  color: black;
+
+}.sidebar{
+  width: 180px;
+  background-color: #4B006E;
+  color: white;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
+}
+.infos-sidebar{
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+.user{
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  color: black;
+  gap: 16px;
+}
+.summary-user{
+  display: grid;
+  background-color: #d9d9d9;
+  grid-template-columns:repeat(4,1fr);
+  gap: 8px;
+  padding: 8px;
+}
+.statistics-user{
+  max-height: 500px;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  gap: 8px;
+  
+}
+.grafics-user{
+  width: 50%;
+  gap: 8px;
+
+}
+.grafics1-user{
+  max-height: 340px;
+  
+  
+}
+.grafics2-user{
+  max-height: 160px;
+  
+}
+
+.grafics3-user{
+  display: grid;
+  background-color: #d9d9d9;
+}
+
+.languages-user{
+  display: grid;
+  background-color: #d9d9d9;
+}
+
+.repo-user{
+  max-height: 500px;
+  border: 1px solid white;
+  width: 50%;
+}
+
+.list-repos-user{
+  background-color: #d9d9d9;
+  gap: 8px;
+  overflow-y: auto;
+  max-height: 355px;
+  width: 375px;
+}
+
+.repos{
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  color: black;
+  height: 100vh;
+  max-height: 675px;
+}
+
+.list-repo{
+  
+  background-color: #d9d9d9;
+  gap: 8px;
+  padding: 8px;
+  overflow-y: auto;
+  
+}
+
+h1{
+  color: black;
+
+} 
+.title-repo{
+  width: 335px;
+  height: 51px;
+  top: 45px;
+  left: 403px;
+  font-weight: 700px;
+  vertical-align: middle;
+  color: #63027C;
+} 
+
+img {
+  color: black;
+
+}
+.img-sidebar{
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+  border-radius: 50%;
+}

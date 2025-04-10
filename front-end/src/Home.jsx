@@ -35,7 +35,7 @@ function Home() {
                         type="text"
                         placeholder="Digite o nome do usário"
                         value={user}
-                        class='search-container'
+                        className='search-container'
                         onChange={(e => setUser(e.target.value))} />
                 </h1>
                 <h1>    

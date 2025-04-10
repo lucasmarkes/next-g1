@@ -1,35 +1,21 @@
 import { Link } from 'react-router-dom';
+import { useUser } from './Context/UserContext';
+import './Style.css'
 
 const NovoSidebar = () => {
   const handleExportPDF = () => {
     alert('Exportar PDF');
   };
 
+  const {userData} = useUser()
+
   return (
     <div
-      style={{
-        width: '300px',
-        backgroundColor: '#4B006E',
-        color: 'white',
-        padding: '2rem 1rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
+      className='sidebar'
     >
-      <div
-        style={{
-          width: '100px',
-          height: '100px',
-          backgroundColor: '#ddd',
-          borderRadius: '50%',
-          marginBottom: '1rem',
-        }}
-      />
-      <h2 style={{ fontSize: '1rem', textAlign: 'center' }}>Nome do Usuário</h2>
-      <p style={{ fontSize: '0.875rem', color: '#ccc', marginBottom: '2rem' }}>
-        Localidade
-      </p>
+      <img src={userData.avatar_url} className='img-sidebar'/>
+      <h2 className='user-sidebar'>{userData.name}</h2>
+      <p className='local-sidebar'>{userData.location}</p>
 
       <Link to="/user" style={linkStyle}>Perfil</Link>
       <Link to="/user/repos" style={linkStyle}>Repositórios</Link>

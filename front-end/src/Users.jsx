@@ -2,6 +2,10 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { useUser } from "./Context/UserContext"
 import './Style.css'
 import { Layout } from "antd";
+import { getUserGraphCommits, getUserStatistics } from "./API/API";
+import { useEffect, useState } from "react";
+import Loading from "./assets/Loading.webp";
+import circulo from "./assets/circulo.jpg"
 
 
 
@@ -15,159 +19,127 @@ const { Content } = Layout;
 
     const {userData} = useUser()
     const {userRepos} = useUser()
-
-    //const languages = []
-    //for (const c of (userRepos.map(
-    //    (repo) => ({repo.id => repo.language})
-    //))){
-    //    languages += x
-    //}
-    //console.log(languages)
-
-    const languages = userRepos.map(repo => repo.language)
-    .filter((lang,index,self) => lang && self.indexOf(lang) == index)
-
-    //const data = location.state?.response
-    //console.log(userRepos)
-
-    return(
-       
-        //<Layout style={{ marginLeft: 200 }}>
-        // <Content
-        //     style={{
-        //     //padding: "24px",
-        //     overflowY: "auto",
-        //     height: "100vh",
-        //     background: "#f5f5f5",
-        //     display: "flex",
-        //     flexDirection: "column",
-        //     alignItems: "center",
-        //     gap: "50px",
-        //     }}
-        // >
-        
-        //     <div style={{ alignSelf: "flex-start", marginLeft: "80px" }}>
-        //     <h1 className="texto-roxo"> Título gráfico 1</h1>
-        //     </div>
-
-        //     <div
-        //     style={{
-        //         background: "rgba(217, 217, 217, 1)",
-        //         minHeight: "292px",
-        //         width: "950px",
-        //         display: "flex",
-        //         justifyContent: "center",
-        //         alignItems: "center",
-        //         borderRadius: "10px",
-        //         marginTop: "-50px",
-        //     }}
-        //     ></div>
-
-        //     <div style={{ alignSelf: "flex-start", marginLeft: "80px" }}>
-        //     <h1 className="texto-roxo">Estatísticas do Usuário</h1>
-        //     </div>
-
-           
-        //     <div
-        //     style={{
-        //         background: "rgba(217, 217, 217, 1)",
-        //         minHeight: "200px",
-        //         width: "950px",
-        //         display: "flex",
-        //         justifyContent: "space-around",
-        //         alignItems: "center",
-        //         borderRadius: "10px",
-        //         marginTop: "-50px",
-        //         padding: "20px"
-        //     }}
-        //     >
-        //     <div className="container-flex">
-        //         <div className="caixa"></div>
-        //         <p className="titulo">Repo</p>
-        //     </div>
-        //     <div className="container-flex">
-        //         <div className="caixa"></div>
-        //         <p className="titulo">Followers</p>
-        //     </div>
-        //     <div className="container-flex">
-        //         <div className="caixa"></div>
-        //         <p className="titulo">Forks</p>
-        //     </div>
-        //     <div className="container-flex">
-        //         <div className="caixa"></div>
-        //         <p className="titulo">Commits</p>
-        //     </div>
-        //     </div>
-
-        //     <div style={{ alignSelf: "flex-start", marginLeft: "80px" }}>
-        //     <h1 className="texto-roxo">Linguagens usadas</h1>
-        //     </div>
-            
-        //     <div
-        //     style={{
-        //         background: "rgba(217, 217, 217, 1)",
-        //         minHeight: "150px",
-        //         width: "500px",
-        //         display: "flex",
-        //         justifyContent:"space-around" ,
-        //         alignItems: "center",
-        //         borderRadius: "10px",
-        //         marginTop: "-50px",
-        //         padding: "20px",
-        //         gap: "20px", 
-        //         flexWrap: "wrap", 
-        //         marginLeft: "-450px"
-        //     }}
-        //     >
-        //     <div className="container-flex">
-        //         <div className="circulo" st></div>
-        //     </div>
-        //     <div className="container-flex">
-        //         <div className="circulo"></div>
-        //     </div>
-        //     <div className="container-flex">
-        //         <div className="circulo"></div>
-        //     </div>
-        //     <div className="container-flex">
-        //         <div className="circulo"></div>
-        //     </div>
-        //     </div>
-        
-
-
     
-        // </Content>
-        //</Layout>
-        
-        <div style={{display: 'flex',flexDirection: 'column', padding: '16px', color: 'black', gap: 16}}>
+    const [statistcs, setStatistics] = useState()
+    const [load, setLoad] = useState()
+    const [graphic, setGraphic] = useState()
+    useEffect(() => {
+        async function getData(){
+            setLoad(true)
+            const response = await getUserStatistics(userData.login)
+            setStatistics(response)
+            const responseGraph = await getUserGraphCommits(userData.login)
+            setGraphic(responseGraph)
+            setLoad(false)
+        }
+        getData()
+    }, [])
+
+    if (load){
+        return <img src={Loading} width="50" height="50"/>
+    }
+          
+    return(
+        <div className="user">
             <div>
-                <h2 style={{color: '#63027C'}}>Estatística do Usuário</h2>
-                <div style={{display: 'grid', backgroundColor: '#d9d9d9', gridTemplateColumns:'repeat(4,1fr)', gap: 8, padding: 8 }}>
-                   <p>Repos</p>
-                   <p>Followers</p>
-                   <p>Forks</p>
-                   <p>Commits</p>
-                   <p>Follows</p>
-                   <p>Stars</p>
-                   <p>Branches</p>
-                   <p>PRs</p> 
+                <h2 className="statistics-title-user">Estatística do Usuário</h2>
+                <div className="summary-user">
+                    <div style={{textAlign: 'center' }}>
+                        <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>{userData.public_repos}</b>
+                        <p>Repos</p>
+                    </div>
+                    <div style={{textAlign: 'center' }}>
+                        <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                            {userData.followers}
+                        </b>
+                        <p>Followers</p>
+                    </div>
+                    <div style={{textAlign: 'center' }}>
+                        <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                            {statistcs?.forks}
+                        </b>
+                        <p>Forks</p>
+                    </div>
+                    <div style={{textAlign: 'center' }}>
+                        <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                            {statistcs?.commits}
+                        </b>
+                        <p>Commits</p>
+                    </div>
+                    <div style={{textAlign: 'center' }}>
+                        <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                            {userData.following}
+                        </b>
+                        <p>Follows</p>
+                    </div>
+                    <div style={{textAlign: 'center' }}>
+                        <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>{statistcs?.estrelas}</b>
+                        <p>Stars</p>
+                    </div>
+                    <div style={{textAlign: 'center' }}>
+                        <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                            {statistcs?.branches}
+                        </b>
+                        <p>Branches</p>
+                    </div>
+                    <div style={{textAlign: 'center', verticalAlign: 'center'}}>
+                        <div style={{textAlign: 'center', justifyContent: 'space-between'}}>
+                            <td style={{verticalAlign: 'center'}}>
+                                <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                                {statistcs?.prs_abertas}
+                                </b>
+                                <p>Abertas</p>
+                            </td>
+                            <td>
+                                <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                                {statistcs?.prs_fechadas}
+                                </b>
+                                <p>Fechadas</p>
+                            </td>
+                        </div>
+                        <p>PRs</p> 
+                    </div>
                 </div>
             </div>
 
-            <div style={{maxHeight:'500px' ,backgroundColor: 'red', display: 'flex', justifyContent: 'space-between', padding: 16, gap: 8}}>
-                <div style={{width: '50%', gap: 8}}>
-                    <div style={{maxHeight: '340px', border: '1px solid blue'}}>
+            <div className="statistics-user">
+                <div className="grafics-user">
+                    <div className="grafics1-user">
                         <h2>Título do Gráfico 2</h2>
-                        <div>Grafico de Bia</div>
+                        <div className="grafics3-user">
+                           <img src={graphic} style={{height: '280px'}}/> 
+                        </div>
                     </div>
                     
-                    <div style={{maxHeight: '160px', border: '1px solid orange'}}>
+                    <div className="grafics2-user">
                         <h2>Linguagem Usadas</h2>
-                        <div>Linguagens de Bia</div>
+                        <div className="languages-user">
+                            <div style={{display: 'flex', gap: '16px', textAlign: 'center'}}>
+                                {statistcs?.linguagens.map(
+                                (ling) => (
+                                    <div style={{color: 'black'}} key={ling.linguagem}>
+                                        <p>{ling.porcentagem.toFixed(2)}%</p>
+                                        <p>{ling.linguagem}</p>
+                                    </div>
+                                )
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div style={{maxHeight: '500px', border: '1px solid white', width: '50%'}}>
+                <div className="repo-user">
                     <h2>Lista Repositórios</h2>
+                    <div className="list-repos-user">
+                        <ul>
+                            {userRepos.map(
+                                (repo) => (
+                                    <li style={{color: 'black'}} key={repo.id}>
+                                        <p>{repo.name}</p>
+                                    </li>
+                                )
+                            )}
+                        </ul>
+                    </div>
                 </div>
 
             </div>

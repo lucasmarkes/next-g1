@@ -2,8 +2,7 @@ from dotenv import load_dotenv
 import os
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from fastapi.middleware.cors import CORSMiddleware
-from github_utils import buscar_estatisticas, get_github_data
+from github_utils import buscar_estatisticas
 from models_github import GithubStats, RepoRequest
 from repo_graph_commits import repo_graph_commits_date
 from user_graph_commits import user_graph_commits_repos
@@ -19,19 +18,6 @@ HEADERS = {"Authorization": f"token {TOKEN}"}
 
 app = FastAPI()
 
-origins = [
-    "http://localhost:5173",
-    "localhost:5173"
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Permite todas as origens
-    allow_credentials=True,
-    allow_methods=["*"],  # Permite todos os métodos (GET, POST, etc.)
-    allow_headers=["*"],  # Permite todos os headers
-)
-from fastapi.middleware.cors import CORSMiddleware
 
 @app.get("/github/{usuario}", response_model=GithubStats)
 def obter_estatisticas(usuario: str):
@@ -58,7 +44,7 @@ def info_repositorio(owner: str, repo: str):
 
     return {
         "repo": repo_data,
-        "contributors": contributors,
+        "contributors": contributors[:5],
         "languages": languages
     }
 
