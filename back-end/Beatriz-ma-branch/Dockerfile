@@ -7,7 +7,8 @@ WORKDIR /Beatriz-ma-branch
 # Copia os arquivos necessários
 COPY requirements.txt .
 COPY main_back.py .
-COPY github_utils.py .
+COPY user_requests.py .
+COPY repo_requests.py .
 COPY models_github.py .
 COPY repo_graph_commits.py . 
 COPY user_graph_commits.py .

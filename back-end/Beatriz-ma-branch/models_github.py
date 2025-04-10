@@ -1,27 +1,26 @@
 from pydantic import BaseModel
-import requests
-from typing import Dict, List
-
-class RepoRequest(BaseModel):
-    owner: str
-    repo: str
+from typing import List
 
 class LinguagemStats(BaseModel):
     linguagem: str
     porcentagem: float
 
-class GithubStats(BaseModel):
-    nome: str
-    login: str
-    localizacao: str
-    criado_em: str
-    seguidores: int
-    public_repos: int
-    commits: int
-    prs_abertas: int
-    prs_fechadas: int
-    branches: int
+class RepoStats(BaseModel):
     estrelas: int
     forks: int
+    watchers: int
+    tamanho: str
+    ultima_atualizacao: str
+    top_contribuidores: List[str]
+    linguagens_repo: List[str]
+
+class UserStats(BaseModel):
+    seguidores: int
+    public_repos: int
+    forks: int
+    estrelas: int
+    commits: int
+    branches: int
+    prs_total: int
     linguagens: List[LinguagemStats]
-    avatar_url: str
+    repositorios: List[RepoStats]
