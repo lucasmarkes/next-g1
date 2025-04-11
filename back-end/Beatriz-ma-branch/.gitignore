@@ -1,9 +1,0 @@
-# Python e outros
-__pycache__/
-.env
-*.log
-*.tmp
-
-# Relatórios ou arquivos gerados
-*.pdf
-*.png
