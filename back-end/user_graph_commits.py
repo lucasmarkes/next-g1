@@ -16,7 +16,7 @@ def user_graph_commits_repos(usuario: str):
     plt.figure(figsize=(10, 5))
     plt.bar(nomes, valores, color="skyblue")
     plt.xticks(rotation=45, ha='right')
-    plt.title("Commits por Repositório")
+    #plt.title("Commits por Repositório") | Grupo optou por deixar o título no Front-end
     plt.ylabel("Quantidade de Commits")
     plt.tight_layout()
 

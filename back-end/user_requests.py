@@ -44,7 +44,7 @@ def baixar_avatar(url, caminho="avatar.png"):
     return None
 
 
-# Permite que as outras funções verifiquem os dados totais (todos os repositórios disponíveis) 
+# Permite que as outras funções verifiquem os dados totais (em todos os repositórios disponíveis)
 def buscar_repositorios(usuario: str) -> list:
     url = f"https://api.github.com/users/{usuario}/repos?per_page=100"
     repos = []
@@ -65,7 +65,7 @@ def buscar_repositorios(usuario: str) -> list:
     return repos
 
 
-# Seguidores, Forks, Estrelas e Número de repositórios 
+# Seguidores e Número de repositórios 
 def buscar_dados_gerais(usuario: str) -> dict:
     url = f"https://api.github.com/users/{usuario}"
     resp = requests.get(url, headers=HEADERS)
@@ -74,11 +74,9 @@ def buscar_dados_gerais(usuario: str) -> dict:
         return {
             "seguidores": user.get("followers", 0),
             "public_repos": user.get("public_repos", 0),
-            "forks": 0,
-            "estrelas": 0
         }
 
-
+# Todas as estatisticas usadas no front-end
 def buscar_estatisticas(usuario: str) -> UserStats:
     user = buscar_usuario(usuario)
     if "erro" in user:
@@ -136,22 +134,6 @@ def buscar_estatisticas(usuario: str) -> UserStats:
     forks = sum(repo.get("forks_count", 0) for repo in repos)
     estrelas = sum(repo.get("stargazers_count", 0) for repo in repos)
     dados_gerais = buscar_dados_gerais(usuario)
-    
-    repositorios = [
-    {
-        "nome": repo["name"],
-        "forks": repo.get("forks_count", 0),
-        "estrelas": repo.get("stargazers_count", 0),
-        "commits": commits,
-        "branches": branches,
-        "prs_abertas": 0,
-        "prs_fechadas": prs_total,  # ou ajustar se for separado
-        "linguagens": linguagens_repo
-    }
-    for repo, commits, branches, prs_total, langs in zip(
-        repos, commits_futures, branches_futures, prs_futures, linguagens_futures
-    )
-    ]
 
     return UserStats(
         seguidores=dados_gerais["seguidores"],
@@ -162,7 +144,7 @@ def buscar_estatisticas(usuario: str) -> UserStats:
         branches=total_branches,
         prs_total=total_prs,
         linguagens=[LinguagemStats(**l) for l in linguagens],
-        repositorios=[RepoStats(**r) for r in repositorios]
+        repositorios = [repo["name"] for repo in repos if not repo.get("private", False)]
     )
 
 
@@ -170,13 +152,7 @@ def buscar_estatisticas(usuario: str) -> UserStats:
 
 
 def coletar_commits_por_repositorio(usuario: str):
-    repos_url = f"https://api.github.com/users/{usuario}/repos?per_page=100"
-    resp = requests.get(repos_url, headers=HEADERS)
-
-    if resp.status_code != 200:
-        raise HTTPException(status_code=resp.status_code, detail=resp.json().get("message"))
-
-    repos = resp.json()
+    repos = buscar_repositorios(usuario) 
     commits_por_repo = {}
 
     def fetch_commits(repo):

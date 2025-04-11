@@ -64,11 +64,7 @@ def info_repositorio(owner: str, repo: str) -> RepoStats:
 
 
 def get_commit_count(owner: str, repo: str):
-    url = f"https://api.github.com/repos/{owner}/{repo}/commits"
-    
-    response = requests.get(url)
-    
-    commits = response.json() 
+    commits = get_github_data(owner, repo, "/commits?per_page=100")
     
     commits_count = {}
 

@@ -23,4 +23,4 @@ class UserStats(BaseModel):
     branches: int
     prs_total: int
     linguagens: List[LinguagemStats]
-    repositorios: List[RepoStats]
+    repositorios: List[str]

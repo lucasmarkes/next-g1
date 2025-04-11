@@ -43,7 +43,7 @@ def gerar_pdf_user(usuario: str,nome_arquivo: str = "") -> str:
     pdf.ln(10)
     pdf.set_font("Arial", "", 12)
     pdf.cell(200, 10, "Top 10 Linguagens:", ln=True)
-    pdf.set_font("Arial", "", 11)
+    pdf.set_font("Arial", "", 10)
     for linguagem in stats.linguagens:
         pdf.cell(200, 10, f"- {linguagem.linguagem}: {linguagem.porcentagem:.2f}%", ln=True)
 
@@ -52,8 +52,8 @@ def gerar_pdf_user(usuario: str,nome_arquivo: str = "") -> str:
     pdf.set_font("Arial", "", 12)
     pdf.cell(200, 10, "Repositórios públicos:", ln=True)
     pdf.set_font("Arial", "", 10)
-    for repo in stats.repositorios:
-        pdf.cell(200, 10, f"- {repo}", ln=True)
+    for nome in stats.repositorios:
+        pdf.cell(200, 10, f"- {nome}", ln=True)
 
 
     pdf.ln(10)

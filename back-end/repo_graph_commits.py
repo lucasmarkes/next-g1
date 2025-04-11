@@ -6,12 +6,13 @@ from fastapi.responses import Response
 def repo_graph_commits_date(owner: str, repo: str):
     sorted_dates, sorted_counts = get_commit_count(owner, repo)
     
-    plt.figure(figsize=(10,5))
+    plt.figure(figsize=(11,6))
     plt.plot(sorted_dates,sorted_counts,marker="o",linestyle="-",color="b")
-    plt.xlabel("data")
-    plt.ylabel("commit")
-    plt.title(f"Commits por data-{owner}/{repo}")
+    plt.xlabel("Datas")
+    plt.ylabel("Commits")
+    # plt.title(f"Commits por data-{owner}/{repo}") | Grupo optou pelo título na page do Front-end
     plt.xticks(rotation=45)
+    plt.tight_layout()
     plt.grid(True)
     
     
