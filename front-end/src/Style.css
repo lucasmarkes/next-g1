@@ -2,33 +2,50 @@ html, body, #root {
     height: 100%;
     margin: 0;
     padding: 0;
-    /*background: #0d1117;*/
+    background: #fcfcfc;
 }
 
 #logo {
-    max-width: 200px;
-    margin-bottom: 20px;
+    width: 355px;
+    height: 243px;
+    top: 198px;
+    left: 542px;
 }
 h1 {
     color: rgb(248, 245, 245); 
+    
 }.search-container {
-    margin-top: 30px;
+    width: 320px;
+    height: 40px;
+    top: 462px;
+    left: 540px;
+    border-radius: 28px;
+    gap: 4px;
+    text-align: center;
+    background-color: #f6effa;
+    border-color: #f6effa;
+    
 }
-  
-input[type="text"] {
-    padding: 10px;
-    font-size: 16px;
+.barra-lateral{
     width: 300px;
-    margin-right: 10px;
-}
+    height: 1024px;
+    color: #64027c;
+} 
+
   
 button {
-    padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #f9faf9; 
+    color: #f9faf9; 
     border: none; 
-    color: rgb(5, 5, 5); 
+    background-color: #63027C;
+    width: 100px; 
+    height: 30px;
+    top: 540px;
+    left: 670px;
+    border-radius: 200px;
+    gap: 200px;
+
 }
   
 button:hover {
@@ -44,4 +61,235 @@ button:hover {
     background-attachment: fixed; 
     color: rgb(248, 248, 248);
 }
+
+p {
+    color:#0c0c0c
+
+}.language{
+    color: #f9faf9;
+    background-color: #08022b;
+}
+.texto-lateral{
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+.local-sidebar{
+  font-size: 0.875rem;
+  color: #ccc;
+  margin-bottom: 3rem;
+  margin-top: 0.1rem; 
+  text-align: center;
+}
   
+/* Estilo para o menu */
+.custom-menu .ant-menu-item {
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  /* Cor de fundo e texto no hover */
+  .custom-menu .ant-menu-item:hover {
+    background-color: #a98bb3 !important;
+    color: #fff !important;
+  }
+  
+  /* Cor de item selecionado */
+  .custom-menu .ant-menu-item-selected {
+    background-color: #a98bb3;
+    color: #fff ;
+  }
+  /* Cor para textos*/
+  .texto-roxo {
+    color: rgba(100, 2, 124, 1); 
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+  }
+  
+
+  .container-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .caixa {
+    width: 80px;
+    height: 80px;
+    background-color: rgb(116, 110, 110);
+    border-radius: 8px;
+    box-shadow: 0 0 10pxrgba(100, 2, 124, 1);
+  }
+  
+  .titulo {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color:rgba(100, 2, 124, 1);
+  }
+  
+  .circulo {
+    width: 80px;
+    height: 80px;
+    background-color:rgb(116, 110, 110);
+    border-radius: 50px;
+  }
+  
+
+
+h2{
+  color: black;
+
+}
+.user-sidebar{
+  font-size: 1.150rem;
+  text-align: center;
+  color: white
+}
+.statistics-title-user{
+  color:  rgba(100, 2, 124, 1);
+}
+
+div{
+  color: black;
+
+}.sidebar{
+  background-color: rgba(100, 2, 124, 1);
+  position: fixed;
+  height: 100vh;
+  width: 180px;
+  color: white;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  
+  
+ 
+}
+.infos-sidebar{
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+  border-radius: 50%;
+  margin-bottom: 1.50rem;
+}
+.user{
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  color: black;
+  gap: 16px;
+  height: 100%;
+  margin-left: 210px;
+   
+}
+.summary-user{
+  display: grid;
+  background-color: #d9d9d9;
+  grid-template-columns:repeat(4,1fr);
+  gap: 8px;
+  padding: 8px;
+}
+.statistics-user{
+  max-height: 500px;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  gap: 8px;
+  
+}
+.grafics-user{
+  width: 50%;
+  gap: 8px;
+
+}
+.grafics1-user{
+  max-height: 340px;
+  
+  
+}
+.grafics2-user{
+  max-height: 160px;
+  
+}
+
+.grafics3-user{
+  display: grid;
+  background-color: #d9d9d9;
+}
+
+.languages-user{
+  display: grid;
+  background-color: #d9d9d9;
+}
+
+.repo-user{
+  max-height: 500px;
+  border: 1px solid white;
+  width: 50%;
+}
+
+.list-repos-user{
+  background-color: #d9d9d9;
+  gap: 8px;
+  overflow-y: auto;
+  max-height: 355px;
+  width: 375px;
+}
+
+.repos{
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  color: black;
+  height: 100vh;
+  max-height: 675px;
+  margin-left: 210px;
+}
+
+.list-repo{
+  
+  background-color: #d9d9d9;
+  gap: 8px;
+  padding: 8px;
+  overflow-y: auto;
+  
+}
+
+h1{
+  color: black;
+
+} 
+.title-repo{
+  width: 335px;
+  height: 51px;
+  top: 45px;
+  left: 403px;
+  font-weight: 700px;
+  vertical-align: middle;
+  color: #63027C;
+} 
+
+img {
+  color: black;
+
+}
+.img-sidebar{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 1);
+  background: #fff;
+  padding: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+
+
+}

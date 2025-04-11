@@ -9,6 +9,7 @@ from models_github import UserStats, RepoStats
 from repo_graph_commits import repo_graph_commits_date
 from user_graph_commits import user_graph_commits_repos
 from pdf_repo_gerar import gerar_pdf_repo
+from fastapi.middleware.cors import CORSMiddleware
 
 
 load_dotenv()
@@ -22,6 +23,15 @@ HEADERS = {
 
 app = FastAPI()
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 #USUÁRIO
 
@@ -48,7 +58,6 @@ def user_graph_commits(usuario: str):
 
 
 #REPOSITÓRIO
-
 
 @app.get("/github/{owner}/{repo}", response_model=RepoStats)
 def estatisticas_repositorio(owner: str, repo: str):
