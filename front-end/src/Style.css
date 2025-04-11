@@ -78,7 +78,9 @@ p {
 .local-sidebar{
   font-size: 0.875rem;
   color: #ccc;
-  margin-bottom: 2rem; 
+  margin-bottom: 3rem;
+  margin-top: 0.1rem; 
+  text-align: center;
 }
   
 /* Estilo para o menu */
@@ -145,33 +147,36 @@ h2{
 
 }
 .user-sidebar{
-  font-size: 1rem;
+  font-size: 1.150rem;
   text-align: center;
   color: white
 }
 .statistics-title-user{
-  color: #63027C;
+  color:  rgba(100, 2, 124, 1);
 }
 
 div{
   color: black;
 
 }.sidebar{
+  background-color: rgba(100, 2, 124, 1);
+  position: fixed;
+  height: 100vh;
   width: 180px;
-  background-color: #4B006E;
   color: white;
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-height: 100%;
+  
+  
+ 
 }
 .infos-sidebar{
   width: 100px;
   height: 100px;
   background-color: #ddd;
   border-radius: 50%;
-  margin-bottom: 1rem;
+  margin-bottom: 1.50rem;
 }
 .user{
   display: flex;
@@ -179,6 +184,9 @@ div{
   padding: 16px;
   color: black;
   gap: 16px;
+  height: 100%;
+  margin-left: 210px;
+   
 }
 .summary-user{
   display: grid;
@@ -241,6 +249,7 @@ div{
   color: black;
   height: 100vh;
   max-height: 675px;
+  margin-left: 210px;
 }
 
 .list-repo{
@@ -273,6 +282,14 @@ img {
 .img-sidebar{
   width: 100px;
   height: 100px;
-  background-color: #ddd;
   border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 1);
+  background: #fff;
+  padding: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+
+
 }

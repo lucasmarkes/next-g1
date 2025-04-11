@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 import matplotlib.pyplot as plt
-from github_utils import coletar_commits_por_repositorio
+from user_requests import coletar_commits_por_repositorio
 from io import BytesIO
 from fastapi.responses import StreamingResponse
 
