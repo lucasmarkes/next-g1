@@ -27,27 +27,35 @@ def info_repositorio(owner: str, repo: str) -> RepoStats:
     forks = repo_data.get("forks_count", 0)
     watchers = repo_data.get("watchers_count", 0)
     size_kb = repo_data.get("size", 0)
-    updated_at = repo_data.get("updated_at", "")
+    updated_at = repo_data.get("updated_at", "N/A")
+    contribuidores_result=["Não foi possível obter os dados do repositório."]
+    linguagens_utilizadas =["Não foi possível obter os dados do repositório."]
 
     # Funções auxiliares (contribuidores e linguagens) para rodar em paralelo
     def fetch_contributors():
         contributors = get_github_data(owner, repo, "/contributors")
-        return [
-            f"- {c['login']} ({c.get('contributions', 0)} commits)"
-            for c in contributors[:10]
-        ]
+        if isinstance(contributors, list):
+            return [f"- {c['login']} ({c.get('contributions', 0)} commits)" for c in contributors]
+        return ["Não foi possível obter contribuidores."]
 
     def fetch_languages():
         languages = get_github_data(owner, repo, "/languages")
-        return [f"- {lang}: {lines} linhas" for lang, lines in languages.items()]
+        if isinstance(languages, dict):
+            return [f"- {lang}: {bytes} bytes" for lang, bytes in languages.items()]
+        return ["Não foi possível obter linguagens."]
 
     # Executar em paralelo com concurrent.futures
-    with ThreadPoolExecutor(max_workers=2) as executor:
-        future_contributors = executor.submit(fetch_contributors)
-        future_languages = executor.submit(fetch_languages)
+    try: 
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            future_contributors = executor.submit(fetch_contributors)
+            future_languages = executor.submit(fetch_languages)
 
-        top_contribuidores = future_contributors.result()
-        linguagens_utilizadas = future_languages.result()
+            contribuidores_result = future_contributors.result()
+            linguagens_utilizadas = future_languages.result()
+    
+    except: 
+        contribuidores_result = ["Erro ao processar os dados (possivelmente repositório muito grande)."]
+        linguagens_utilizadas = ["Erro ao processar os dados (possivelmente repositório muito grande)."]
 
     return RepoStats(
         estrelas=stars,
@@ -55,7 +63,7 @@ def info_repositorio(owner: str, repo: str) -> RepoStats:
         watchers=watchers,
         tamanho=f"{size_kb} KB",
         ultima_atualizacao=updated_at,
-        top_contribuidores=top_contribuidores,
+        contribuidores = contribuidores_result,
         linguagens_repo=linguagens_utilizadas
     )
 
