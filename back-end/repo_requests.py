@@ -54,7 +54,7 @@ def info_repositorio(owner: str, repo: str) -> RepoStats:
             linguagens_utilizadas = future_languages.result()
     
     except: 
-        contribuidores = ["Erro ao processar os dados (possivelmente repositório muito grande)."]
+        contribuidores_result = ["Erro ao processar os dados (possivelmente repositório muito grande)."]
         linguagens_utilizadas = ["Erro ao processar os dados (possivelmente repositório muito grande)."]
 
     return RepoStats(
