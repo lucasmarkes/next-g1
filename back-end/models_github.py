@@ -11,7 +11,7 @@ class RepoStats(BaseModel):
     watchers: int
     tamanho: str
     ultima_atualizacao: str
-    top_contribuidores: List[str]
+    contribuidores: List[str]
     linguagens_repo: List[str]
 
 class UserStats(BaseModel):
