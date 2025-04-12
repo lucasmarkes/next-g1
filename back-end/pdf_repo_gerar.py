@@ -21,12 +21,9 @@ def gerar_pdf_repo(owner: str, repo: str) -> str:
 
     pdf.ln(10)
     pdf.set_font("Arial", "", 12)
-
-    pdf.ln(10)
-    pdf.set_font("Arial", "", 12)
-    pdf.cell(200, 10, " Top 10 Contribuidores:", ln=True)
+    pdf.cell(200, 10, " Contribuidores:", ln=True)
     pdf.set_font("Arial", "", 10)
-    for contribuidor in info.top_contribuidores:
+    for contribuidor in info.contribuidores:
         pdf.cell(200, 10, contribuidor, ln=True)
 
     pdf.ln(10)
