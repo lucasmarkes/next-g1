@@ -13,7 +13,7 @@ function Router() {
                 <Route path='/user' element = {<Layout/>}>
                     <Route index element={<Users/>}/>
                     <Route path='repos' element={<Repos/>}/>
-                    <Route path='repo/:id' element={<StatisticRepo/>}/>
+                    <Route path='repo/:repo' element={<StatisticRepo/>}/>
                 </Route>
                 
             </Routes>
