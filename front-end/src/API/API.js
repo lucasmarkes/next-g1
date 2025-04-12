@@ -25,17 +25,20 @@ export const getUserStatistics = async (user) => {
     }
 }
 
-export const getRepoGraphCommits = async (owner, repo) => {
-    let object = {
-        owner,
-        repo
-    }
+export const getRepoStatistics = async (user, repo) => {
     try { 
-        const data = await fetch(`http://127.0.0.1:8000/grafico/repo`, {
-            method: "POST",
-            body: JSON.stringify(object)
-        })
-        return data
+        const data = await fetch(`http://127.0.0.1:8000/github/${user}/${repo}`)
+        return data.json()
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getRepoGraphCommits = async (owner, repo) => {
+    try { 
+        const data = await fetch(`http://127.0.0.1:8000/grafico/${owner}/${repo}`)
+        const blob = await data.blob()
+        return URL.createObjectURL(blob)
     } catch (error) {
         console.log(error)
     }

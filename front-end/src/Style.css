@@ -151,7 +151,7 @@ h2{
   text-align: center;
   color: white
 }
-.statistics-title-user{
+.statistics-title{
   color:  rgba(100, 2, 124, 1);
 }
 
@@ -179,6 +179,16 @@ div{
   margin-bottom: 1.50rem;
 }
 .user{
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  color: black;
+  gap: 16px;
+  height: 100%;
+  margin-left: 210px;
+   
+}
+.repo-statistics{
   display: flex;
   flex-direction: column;
   padding: 16px;
