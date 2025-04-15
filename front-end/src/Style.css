@@ -2,7 +2,7 @@ html, body, #root {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: #fcfcfc;
+    background: #0d0116;
 }
 
 #logo {
@@ -81,6 +81,20 @@ p {
   margin-bottom: 3rem;
   margin-top: 0.1rem; 
   text-align: center;
+}
+
+.dados{
+  display: inline-block;
+  border-color: black;
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+  background-color: white;
+  text-align: center ;
+  vertical-align: baseline;
+  /* position: relative;
+  top: 20px; */
+   
 }
   
 /* Estilo para o menu */
@@ -182,9 +196,9 @@ div{
   display: flex;
   flex-direction: column;
   padding: 16px;
-  color: black;
+  color: rgb(255, 255, 255);
   gap: 16px;
-  height: 100%;
+  background-color: white;
   margin-left: 210px;
    
 }
@@ -196,14 +210,16 @@ div{
   gap: 16px;
   height: 100%;
   margin-left: 210px;
+  background-color: white;
    
 }
 .summary-user{
   display: grid;
   background-color: #d9d9d9;
   grid-template-columns:repeat(4,1fr);
-  gap: 8px;
-  padding: 8px;
+  gap: 4px;
+  padding: 4px;
+  
 }
 .statistics-user{
   max-height: 500px;
@@ -214,8 +230,12 @@ div{
   
 }
 .grafics-user{
-  width: 50%;
+  width: 725px;
   gap: 8px;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  
 
 }
 .grafics1-user{
@@ -231,6 +251,11 @@ div{
 .grafics3-user{
   display: grid;
   background-color: #d9d9d9;
+  box-sizing: border-box;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+ 
 }
 
 .languages-user{
@@ -238,10 +263,17 @@ div{
   background-color: #d9d9d9;
 }
 
+.languages-list{
+  display: flex;
+  gap: 16px;
+  text-align: center;
+}
+
 .repo-user{
   max-height: 500px;
   border: 1px solid white;
-  width: 50%;
+  width: 375px;
+  
 }
 
 .list-repos-user{
@@ -270,6 +302,16 @@ div{
   overflow-y: auto;
   
 }
+.summary-pr{
+  display: grid;
+  background-color: #d9d9d9;
+  grid-template-columns:repeat(2,1fr);
+  gap: 4px;
+  padding: 4px;
+  text-align: center;
+}
+
+
 
 h1{
   color: black;
@@ -302,4 +344,20 @@ img {
   margin: 0 auto;
 
 
+}
+
+b.dados{
+  background-clip: padding-box;
+  background-position: 50%;
+  display: inline-block;
+  border-color: black;
+  border-radius: 75%;
+  height: 18px;
+  width: 18px;
+  background-color: white;
+  text-align: center ;
+  vertical-align: baseline;
+  /* position: relative;
+  top: 20px; */
+   
 }

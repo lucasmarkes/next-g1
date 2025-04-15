@@ -1,9 +1,9 @@
 import {Routes, Route, BrowserRouter} from 'react-router-dom'
-import Home from '../Home'
-import Users from '../Users'
-import Repos from '../Repos'
-import Layout from '../Layout'
-import StatisticRepo from '../StatisticRepo'
+import Users from '../Componentes/Users'
+import Repos from '../Componentes/Repos'
+import Layout from '../Componentes/Layout'
+import StatisticRepo from '../Componentes/StatisticRepo'
+import Home from '../Componentes/Home'
 
 function Router() {
     return(

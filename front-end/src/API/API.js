@@ -53,3 +53,37 @@ export const getUserGraphCommits = async(user) =>{
         console.log(error)
     }
 }
+
+export const getUserPdf = async(user) =>{
+    try { 
+        const data = await fetch(`http://127.0.0.1:8000/relatorio/${user.trim()}`)
+        const blob = await data.blob()
+        const url = window.URL.createObjectURL(blob)
+        const link = document.createElement("a")
+        link.href=url
+        link.download="Relatorio Usuário.pdf"
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+        window.URL.revokeObjectURL(url)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getReposPdf = async(user, repo) =>{
+    try { 
+        const data = await fetch(`http://127.0.0.1:8000/relatorio/${user.trim()}/${repo}`)
+        const blob = await data.blob()
+        const url = window.URL.createObjectURL(blob)
+        const link = document.createElement("a")
+        link.href=url
+        link.download=`Relatorio ${repo}.pdf`
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+        window.URL.revokeObjectURL(url)
+    } catch (error) {
+        console.log(error)
+    }
+}

@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom';
-import { useUser } from './Context/UserContext';
-import './Style.css'
+import { useUser } from '../Context/UserContext';
+import '../Style.css'
 import { FaUser, FaBook, FaFilePdf, FaSearch } from "react-icons/fa";
+import { getUserPdf } from '../API/API';
 
 
 
 const NovoSidebar = () => {
-  const handleExportPDF = () => {
-    alert('Exportar PDF');
-  };
-
+  
   const {userData} = useUser()
+
+  const handleExportPDF = () => {
+    getUserPdf(userData.login)
+  };
   
   return (
     <div

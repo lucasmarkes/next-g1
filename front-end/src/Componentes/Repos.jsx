@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { useUser } from "./Context/UserContext"
+import { useUser } from "../Context/UserContext"
 
 function Repos() {
     const {userRepos} = useUser()
@@ -11,15 +11,16 @@ function Repos() {
         <div className="repos">
             <h1 className="title-repo">Lista de Repositórios</h1>
                 <div className="list-repo">
-                    <ul>
+                    <div>
                         {userRepos.map(
                             (repo) => (
-                                <li onClick={() => navigate(`/user/repo/${repo.name}`)} style={{color: 'black'}} key={repo.id}>
-                                    <p>{repo.name}</p>
-                                </li>
+                                <div style={{display: 'flex', color: 'black'}} key={repo.id}>
+                                    <button onClick={() => navigate(`/user/repo/${repo.name}`)}>click</button>
+                                    <p>{repo.name}</p>                                    
+                                </div>
                             )
                         )}
-                    </ul>
+                    </div>
                 </div>
         </div>
     )
