@@ -1,9 +1,9 @@
 import { createContext, useEffect, useState } from 'react'
-import logo from './assets/RetroGit.png'
-import { getRepos, getUser } from './API/API'
+import logo from '../assets/RetrospetGit.jpg'
+import { getRepos, getUser } from '../API/API'
 import { useNavigate } from 'react-router-dom'
-import './Style.css'
-import { useUser } from './Context/UserContext'
+import '../Style.css'
+import { useUser } from '../Context/UserContext'
 
 function Home() {
     const [user, setUser] = useState("")
@@ -28,8 +28,8 @@ function Home() {
     return (
         <>
             <div className="App">
-                <img src={logo} />
-                <h1 style={{color: '#64027c'}}>Retrospecgit</h1>
+                <img src={logo} width='350'/>
+                {/* <h1 style={{color: '#64027c'}}>Retrospecgit</h1> */}
                 <h1>
                     <input
                         type="text"

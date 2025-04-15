@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
-import { getRepoGraphCommits, getRepoStatistics } from "./API/API"
-import { useUser } from "./Context/UserContext"
+import { getRepoGraphCommits, getReposPdf, getRepoStatistics } from "../API/API"
+import { useUser } from "../Context/UserContext"
 import { useEffect, useState } from "react"
 
 
@@ -25,6 +25,10 @@ function StatisticRepo() {
         getData()
     }, [])
 
+    const handleExportPDF = () => {
+        getReposPdf(userData.login,repo)
+      };
+
     const isoDate = new Date(infos?.ultima_atualizacao)
     const formatted = isoDate.toLocaleDateString("pt-BR",
         {
@@ -36,7 +40,10 @@ function StatisticRepo() {
 
     return (
         <div className="repo-statistics">
-            <h2 className="statistics-title">{repo}</h2>
+            <div>
+                <h2 className="statistics-title">{repo}</h2>
+                <button onClick={handleExportPDF}>PDF Repositório</button>
+            </div>
             <h3>Ultimo Update</h3>
             <h3>{formatted}</h3>
             <div className="summary-user">
@@ -75,13 +82,13 @@ function StatisticRepo() {
             <div>
                 <p>Top Contribuidores</p>
                 <p>
-                    {infos?.top_contribuidores.map(
+                    {infos?.top_contribuidores?.length>0?infos?.top_contribuidores.map(
                         (contri, index) =>(
                             <div key={index}>
                                 <p>{contri}</p>
                             </div>
                         )
-                    )}
+                    ):"Sem Contribuidores"}
                 </p>
             </div>
 

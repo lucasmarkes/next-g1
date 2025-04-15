@@ -1,13 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom"
-import { useUser } from "./Context/UserContext"
-import './Style.css'
+import { useUser } from "../Context/UserContext"
+import '../Style.css'
 import { Layout } from "antd";
-import { getUserGraphCommits, getUserStatistics } from "./API/API";
+import { getUserGraphCommits, getUserStatistics } from "../API/API";
 import { useEffect, useState } from "react";
-import Loading from "./assets/Loading.webp";
-
-
-
+import Loading from "../assets/Loading.webp";
 
 function Users() {
     //const location = useLocation()
@@ -35,14 +32,6 @@ function Users() {
     }, [])
 
     console.log(statistcs, graphic)
-    if((statistcs === undefined || graphic === undefined) || (statistcs.detail || graphic.detail)){
-        return(
-            <div className="user">
-                <h1>Volte Mais Tarde</h1>
-            </div>
-        )
-    }
-
     if (load){
         return (
             <div className="user">
@@ -51,7 +40,16 @@ function Users() {
             </div>
          )
     }
-          
+
+    if((statistcs === undefined || graphic === undefined) || (statistcs.detail || graphic.detail)){
+        return(
+            <div className="user">
+                <h1>Volte Mais Tarde</h1>
+            </div>
+        )
+    }
+
+            
     return(
         <div>
             <div className="user">
@@ -60,59 +58,58 @@ function Users() {
                     <h2 className="statistics-title">Estatística do Usuário</h2>
                     <div className="summary-user">
                         <div style={{textAlign: 'center' }}>
-                            <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>{userData.public_repos}</b>
+                            <b className="dados">{userData.public_repos}</b>
                             <p>Repos</p>
                         </div>
                         <div style={{textAlign: 'center' }}>
-                            <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                            <b className="dados">
                                 {userData.followers}
                             </b>
                             <p>Followers</p>
                         </div>
                         <div style={{textAlign: 'center' }}>
-                            <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                            <b className="dados">
                                 {statistcs?.forks}
                             </b>
                             <p>Forks</p>
                         </div>
                         <div style={{textAlign: 'center' }}>
-                            <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                            <b className="dados">
                                 {statistcs?.commits}
                             </b>
                             <p>Commits</p>
                         </div>
                         <div style={{textAlign: 'center' }}>
-                            <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                            <b className="dados">
                                 {userData.following}
                             </b>
                             <p>Follows</p>
                         </div>
                         <div style={{textAlign: 'center' }}>
-                            <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>{statistcs?.estrelas}</b>
+                            <b className="dados">
+                                {statistcs?.estrelas}
+                            </b>
                             <p>Stars</p>
                         </div>
                         <div style={{textAlign: 'center' }}>
-                            <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                            <b className="dados">
                                 {statistcs?.branches}
                             </b>
                             <p>Branches</p>
                         </div>
-                        <div style={{textAlign: 'center', verticalAlign: 'center'}}>
-                            <div style={{textAlign: 'center', justifyContent: 'space-between'}}>
-                                <td style={{verticalAlign: 'center'}}>
-                                    <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
+                        <div className="summary-pr">
+                            <div>
+                                <b className="dados">
                                     {statistcs?.prs_abertas}
-                                    </b>
-                                    <p>Abertas</p>
-                                </td>
-                                <td>
-                                    <b style={{display: 'inline-block', borderColor: 'black', borderRadius:'50%', height: '25px', width: '25px', backgroundColor: 'white', textAlign: 'center', verticalAlign: 'baseline' }}>
-                                    {statistcs?.prs_fechadas}
-                                    </b>
-                                    <p>Fechadas</p>
-                                </td>
+                                </b>
+                                <p>PR Abertas</p>
                             </div>
-                            <p>PRs</p> 
+                            <div>
+                                <b className="dados">
+                                    {statistcs?.prs_fechadas}
+                                </b>
+                                <p>PR Fechadas</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,14 +119,14 @@ function Users() {
                         <div className="grafics1-user">
                             <h2>Quantidade de Commits por Repo</h2>
                             <div className="grafics3-user">
-                            <img src={graphic} style={{height: '280px'}}/> 
+                            <img src={graphic} style={{height:'300px'}}/> 
                             </div>
                         </div>
                         
                         <div className="grafics2-user">
                             <h2>Linguagem Usadas</h2>
                             <div className="languages-user">
-                                <div style={{display: 'flex', gap: '16px', textAlign: 'center'}}>
+                                <div className="languages-list">
                                     {statistcs?.linguagens.map(
                                     (ling) => (
                                         <div style={{color: 'black'}} key={ling.linguagem}>
