@@ -16,25 +16,25 @@ def gerar_pdf_repo(owner: str, repo: str) -> str:
     pdf.cell(200, 10, f" Estrelas: {info.estrelas}", ln=True)
     pdf.cell(200, 10, f" Forks: {info.forks}", ln=True)
     pdf.cell(200, 10, f" Watchers: {info.watchers}", ln=True)
-    pdf.cell(200, 10, f" Tamanho: {info.tamanho} KB", ln=True)
+    pdf.cell(200, 10, f" Tamanho: {info.tamanho}", ln=True)
     pdf.cell(200, 10, f" Última atualização: {info.ultima_atualizacao}", ln=True)
 
     pdf.ln(10)
     pdf.set_font("Arial", "", 12)
-    pdf.cell(200, 10, " Contribuidores:", ln=True)
+    pdf.cell(200, 10, " Contribuidores (máximo: 10):", ln=True)
     pdf.set_font("Arial", "", 10)
     for contribuidor in info.contribuidores:
         pdf.cell(200, 10, contribuidor, ln=True)
 
     pdf.ln(10)
     pdf.set_font("Arial", "", 12)
-    pdf.cell(200, 10, " Linguagens Utilizadas:", ln=True)
+    pdf.cell(200, 10, " Linguagens Utilizadas (máximo: 10):", ln=True)
     pdf.set_font("Arial", "", 10)
     for linguagem in info.linguagens_repo:
         pdf.cell(200, 10, linguagem, ln=True)
 
     pdf.ln(10)
-    pdf.multi_cell(0, 10, "Este relatório foi gerado automaticamente com base nas informações públicas do GitHub.")
+    pdf.multi_cell(0, 10, "Este relatório foi gerado automaticamente com base nas informações públicas do GitHub. Considere os limites de requisições permitidas")
 
     nome_arquivo = f"relatorio_repositorio_{repo}.pdf"
     pdf.output(nome_arquivo)

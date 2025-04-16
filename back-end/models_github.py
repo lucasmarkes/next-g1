@@ -3,9 +3,11 @@ from typing import List
 
 
 class Limite (Exception):
-    """Exceção: limite de requisições da API do GitHub está prestes a ser excedido."""
-    pass
-
+    def __init__(self):
+        super().__init__(
+            "Atenção: poucas requisições restantes na API do GitHub.\n"
+            "Operação interrompida para evitar bloqueio por limite."
+        )
 
 class LinguagemStats(BaseModel):
     linguagem: str

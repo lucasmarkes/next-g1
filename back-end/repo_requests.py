@@ -21,14 +21,14 @@ def get_github_data(owner: str, repo: str, endpoint: str = ""):
     
     try:
         # Definindo o tempo limite para 10 segundos
-        response = requests.get(url, headers=HEADERS, timeout=10)
+        resp = requests.get(url, headers=HEADERS, timeout=10)
 
          # Verifica o limite de requisições restante
         remaining = int(resp.headers.get("X-RateLimit-Remaining", 1000))
         
         # Se o limite estiver prestes a ser atingido, interrompe e informa o usuário
         if remaining < 5:
-            raise Limite (f"Não podemos completar a análise desses dados: o limite de requisições permitidas pelo GitHub seria atingido.")
+            raise Limite
         
         # Se a requisição for bem-sucedida, retorna os dados no formato JSON
         return resp.json()
@@ -57,8 +57,8 @@ def info_repositorio(owner: str, repo: str) -> RepoStats:
             watchers=0,
             tamanho="N/A",
             ultima_atualizacao="N/A",
-            contribuidores=["Erro ao acessar dados do repositório."],
-            linguagens_repo=["Erro ao acessar dados do repositório."]
+            contribuidores=["Erro ao acessar dados / repositório muito grande."],
+            linguagens_repo=["Erro ao acessar dados / repositório muito grande."]
         )
 
     stars = repo_data.get("stargazers_count", 0)
@@ -72,28 +72,35 @@ def info_repositorio(owner: str, repo: str) -> RepoStats:
     def fetch_contributors():
         contributors = get_github_data(owner, repo, "/contributors")
         if isinstance(contributors, list):
-            return [f"- {c['login']} ({c.get('contributions', 0)} commits)" for c in contributors]
+            return [f"- {c['login']} ({c.get('contributions', 0)} commits)" for c in contributors[:10]]
         return ["Não foi possível obter contribuidores (repositório muito grande)."]
 
     def fetch_languages():
         languages = get_github_data(owner, repo, "/languages")
         if isinstance(languages, dict):
-            return [f"- {lang}: {bytes} bytes" for lang, bytes in languages.items()]
+            sorted_languages = sorted(languages.items(), key=lambda x: x[1], reverse=True)[:10]
+            return [f"- {lang}: {bytes} bytes" for lang, bytes in sorted_languages]
         return ["Não foi possível obter linguagens (repositório muito grande)."]
 
     # Executar em paralelo com concurrent.futures
     try: 
         with ThreadPoolExecutor(max_workers=2) as executor:
             future_contributors = executor.submit(fetch_contributors)
-            future_languages = executor.submit(fetch_languages)
+            future_languages = executor.submit(fetch_languages)            
 
             contribuidores_result = future_contributors.result()
             linguagens_utilizadas = future_languages.result()
-    
-    except Exception as e: 
-        print(f"Erro ao executar em paralelo: {e}")
-        contribuidores_result = ["Erro ao processar os dados (repositório muito grande)."]
-        linguagens_utilizadas = ["Erro ao processar os dados (repositório muito grande)."]
+
+            if any(isinstance(r, dict) and "operação impedida" in r for r in [contribuidores_result, linguagens_utilizadas]):
+                print("Erro ao executar em paralelo: limite de requisições atingido.")
+                contribuidores_result = ["Erro ao processar os dados."]
+                linguagens_utilizadas = ["Erro ao processar os dados."]
+
+    except Exception as e:
+        print(f"Erro inesperado: {e}")
+        contribuidores_result = ["Erro ao processar os dados (repositório muito grande ou limite da API)."]
+        linguagens_utilizadas = ["Erro ao processar os dados (repositório muito grande ou limite da API)."]
+
 
     return RepoStats(
         estrelas=stars,
@@ -118,14 +125,13 @@ def get_commit_count(owner: str, repo: str):
     
     commits_count = {}
 
-
     for commit in commits:
         try:
             commit_date = commit["commit"]["author"]["date"][:10]
             commits_count[commit_date] = commits_count.get(commit_date, 0) + 1
         except KeyError as e:
             print(f"Erro ao buscar commits para {owner}/{repo} : {e}")
-            continue
+            return None
 
     sorted_dates = sorted(commits_count.keys())
     sorted_counts = [commits_count[date] for date in sorted_dates]
