@@ -1,6 +1,12 @@
 from pydantic import BaseModel
 from typing import List
 
+
+class Limite (Exception):
+    """Exceção: limite de requisições da API do GitHub está prestes a ser excedido."""
+    pass
+
+
 class LinguagemStats(BaseModel):
     linguagem: str
     porcentagem: float
