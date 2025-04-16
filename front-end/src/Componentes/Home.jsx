@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
-import logo from '../assets/RetrospetGit.jpg'
+import logo from '../assets/RetrospectGit.png'
 import { getRepos, getUser } from '../API/API'
 import { useNavigate } from 'react-router-dom'
 import '../Style.css'
@@ -33,16 +33,24 @@ function Home() {
                 <h1>
                     <input
                         type="text"
-                        placeholder="Digite o nome do usário"
+                        placeholder="Digite o nome do usuário"
                         value={user}
-                        className='search-container'
-                        onChange={(e => setUser(e.target.value))} />
+                        className="search-container"
+                        onChange={(e) => setUser(e.target.value)}
+                        onKeyDown={(e) => {
+                        if (e.key === 'Enter' && user.length > 0) {
+                            handleSearch();
+                        }
+                        }}
+                    />
                 </h1>
-                <h1>    
+
+                <h1>
                     <button
                         onClick={handleSearch}
-                        disabled={user.length === 0}>Buscar</button>
-
+                        disabled={user.length === 0}>
+                        Buscar
+                    </button>
                 </h1>
 
             </div>

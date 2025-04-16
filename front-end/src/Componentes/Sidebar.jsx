@@ -23,12 +23,12 @@ const NovoSidebar = () => {
       <p className='local-sidebar'>{userData.location}</p>
 
 
-      <Link to="/user" style={linkStyle}>
+      <Link to="/user" className='link'>
         <FaUser style={{ marginRight: '10px' }} />
         Perfil
       </Link>
 
-      <Link to="/user/repos" style={linkStyle}>
+      <Link to="/user/repos" className='link'>
         <FaBook style={{ marginRight: '10px' }} />
         Repositórios
       </Link>
@@ -38,7 +38,7 @@ const NovoSidebar = () => {
         Exportar PDF
       </button>
 
-        <Link to="/" style={linkStyleTest}>
+        <Link to="/" className='link-search'>
         <FaSearch style={{ marginRight: '10px'}} />
         Nova Busca
       </Link>
@@ -46,26 +46,6 @@ const NovoSidebar = () => {
 
     </div>
   );
-};
-
-const linkStyle = {
-  color: 'white',
-  textDecoration: 'none',
-  margin: '0.7rem 1.5rem',
-  fontWeight: 500,
-  justifyContent: 'flex-start', 
-  display: 'flex', 
-};
-
-const linkStyleTest = {
-  color: 'white',
-  textDecoration: 'none',
-  margin: '0 1.5rem', 
-  fontWeight: 500,
-  justifyContent: 'flex-start', 
-  display: 'flex', 
-  marginTop: '170px',
-  
 };
 
 const buttonStyle = {
@@ -76,9 +56,6 @@ const buttonStyle = {
   fontWeight: 500,
   cursor: 'pointer',
   whiteSpace: 'nowrap',
-  
-  
-  
 };
 
-export default NovoSidebar;
+export default NovoSidebar;

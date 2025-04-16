@@ -2,7 +2,7 @@ html, body, #root {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: #0d0116;
+    background:rgb(16, 32, 45);
 }
 
 #logo {
@@ -54,13 +54,20 @@ button:hover {
 }
 
 .App {
-    text-align: center;
-    padding: 150px;
-    background-size: cover;
-    background-position: center; 
-    background-attachment: fixed; 
-    color: rgb(248, 248, 248);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 150px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: rgb(248, 248, 248);
+  height: 100vh;
+  box-sizing: border-box;
 }
+
 
 p {
     color:#0c0c0c
@@ -171,8 +178,9 @@ h2{
 
 div{
   color: black;
+}
 
-}.sidebar{
+.sidebar {
   background-color: rgba(100, 2, 124, 1);
   position: fixed;
   height: 100vh;
@@ -181,10 +189,16 @@ div{
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
-  
-  
- 
+  border-right: 3px solid rgba(255, 255, 255, 0.2); 
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease; 
 }
+
+.sidebar:hover {
+  border-right: 6px solid rgba(255, 255, 255, 0.6); 
+  box-shadow: 10px 0 12px rgba(0, 0, 0, 0.2);
+}
+
 .infos-sidebar{
   width: 100px;
   height: 100px;
@@ -361,3 +375,38 @@ b.dados{
   top: 20px; */
    
 }
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 260vh;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  margin: 0.7rem 1.5rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.link-search {
+  color: white;
+  text-decoration: none;
+  margin: 0 1.5rem;
+  margin-top: 165px;
+  font-weight: 500;
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+
+
+
+
+
