@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import io
 from fastapi.responses import Response
 
-def repo_graph_commits_date(owner: str, repo: str):
-    sorted_dates, sorted_counts = get_commit_count(owner, repo)
+def repo_graph_commits_date(owner: str, repo: str, intervalo: int = 30):
+    sorted_dates, sorted_counts = get_commit_count(owner, repo, intervalo)
     
     plt.figure(figsize=(11,6))
     plt.plot(sorted_dates,sorted_counts,marker="o",linestyle="-",color="b")

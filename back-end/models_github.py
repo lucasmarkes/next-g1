@@ -1,6 +1,14 @@
 from pydantic import BaseModel
 from typing import List
 
+
+class Limite (Exception):
+    def __init__(self):
+        super().__init__(
+            "Atenção: poucas requisições restantes na API do GitHub.\n"
+            "Operação interrompida para evitar bloqueio por limite."
+        )
+
 class LinguagemStats(BaseModel):
     linguagem: str
     porcentagem: float
