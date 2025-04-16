@@ -34,7 +34,12 @@ def gerar_pdf_repo(owner: str, repo: str) -> str:
         pdf.cell(200, 10, linguagem, ln=True)
 
     pdf.ln(10)
-    pdf.multi_cell(0, 10, "Este relatório foi gerado automaticamente com base nas informações públicas do GitHub. Considere os limites de requisições permitidas")
+    pdf.set_font("Arial", "B", 10)
+    pdf.cell(200,10, "NOTA")
+    pdf.set_font("Arial", "", 10)
+    pdf.cell(200, 10, "As estattísticas são coletadas somente a partir das informações públicas do GitHub")
+    pdf.cell(200, 10, "Considere também que há limites de requisições permitidas ou suportadas pela API")
+    pdf.cell(200, 10, "Equipe RetrospectGit agradece a sua visita!")
 
     nome_arquivo = f"relatorio_repositorio_{repo}.pdf"
     pdf.output(nome_arquivo)

@@ -116,7 +116,7 @@ def info_repositorio(owner: str, repo: str) -> RepoStats:
 # Gráfico de commits por data do REPOSITÓRIO
 
 
-def get_commit_count(owner: str, repo: str):
+def get_commit_count(owner: str, repo: str, intervalo: int = 30):
     commits = get_github_data(owner, repo, "/commits?per_page=100")
     
     if not commits or not isinstance(commits, list):
@@ -134,6 +134,10 @@ def get_commit_count(owner: str, repo: str):
             return None
 
     sorted_dates = sorted(commits_count.keys())
+
+    if intervalo:
+        sorted_dates = sorted_dates[-intervalo:]
+        
     sorted_counts = [commits_count[date] for date in sorted_dates]
         
     return sorted_dates, sorted_counts
