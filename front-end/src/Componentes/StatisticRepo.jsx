@@ -82,7 +82,7 @@ function StatisticRepo() {
             <div>
                 <p>Top Contribuidores</p>
                 <p>
-                    {infos?.top_contribuidores?.length>0?infos?.top_contribuidores.map(
+                    {infos?.contribuidores?.length>0?infos?.contribuidores.map(
                         (contri, index) =>(
                             <div key={index}>
                                 <p>{contri}</p>

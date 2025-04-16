@@ -34,7 +34,7 @@ function Users() {
     console.log(statistcs, graphic)
     if (load){
         return (
-            <div className="user">
+            <div className="user, center-container">
                 <h1>Carregando</h1>
                 <img src={Loading} width="50" height="50"/>
             </div>
@@ -43,7 +43,7 @@ function Users() {
 
     if((statistcs === undefined || graphic === undefined) || (statistcs.detail || graphic.detail)){
         return(
-            <div className="user">
+            <div className="user, center-container">
                 <h1>Volte Mais Tarde</h1>
             </div>
         )
