@@ -56,58 +56,58 @@ function Users() {
                 {/* {load && <img src={Loading} width="100" height="100"/>} */}
                 <div>
                     <h2 className="statistics-title">Estatística do Usuário</h2>
-                    <div className="summary-user">
+                    <div className="summary-user" >
                         <div style={{textAlign: 'center' }}>
-                            <b className="dados">{userData.public_repos}</b>
+                            <div className="dados">{userData.public_repos}</div>
                             <p>Repos</p>
                         </div>
                         <div style={{textAlign: 'center' }}>
-                            <b className="dados">
+                            <div className="dados">
                                 {userData.followers}
-                            </b>
+                            </div>
                             <p>Followers</p>
                         </div>
                         <div style={{textAlign: 'center' }}>
-                            <b className="dados">
+                            <div className="dados">
                                 {statistcs?.forks}
-                            </b>
+                            </div>
                             <p>Forks</p>
                         </div>
                         <div style={{textAlign: 'center' }}>
-                            <b className="dados">
+                            <div className="dados">
                                 {statistcs?.commits}
-                            </b>
+                            </div>
                             <p>Commits</p>
                         </div>
                         <div style={{textAlign: 'center' }}>
-                            <b className="dados">
+                            <div className="dados">
                                 {userData.following}
-                            </b>
+                            </div>
                             <p>Follows</p>
                         </div>
                         <div style={{textAlign: 'center' }}>
-                            <b className="dados">
+                            <div className="dados">
                                 {statistcs?.estrelas}
-                            </b>
+                            </div>
                             <p>Stars</p>
                         </div>
                         <div style={{textAlign: 'center' }}>
-                            <b className="dados">
+                            <div className="dados">
                                 {statistcs?.branches}
-                            </b>
+                            </div>
                             <p>Branches</p>
                         </div>
                         <div className="summary-pr">
                             <div>
-                                <b className="dados">
+                                <div className="dados">
                                     {statistcs?.prs_abertas}
-                                </b>
+                                </div>
                                 <p>PR Abertas</p>
                             </div>
                             <div>
-                                <b className="dados">
+                                <div className="dados">
                                     {statistcs?.prs_fechadas}
-                                </b>
+                                </div>
                                 <p>PR Fechadas</p>
                             </div>
                         </div>
@@ -117,7 +117,7 @@ function Users() {
                 <div className="statistics-user">
                     <div className="grafics-user">
                         <div className="grafics1-user">
-                            <h2>Quantidade de Commits por Repo</h2>
+                            <h2>Quantidade de Commits por Repositório</h2>
                             <div className="grafics3-user">
                             <img src={graphic} style={{height:'300px'}}/> 
                             </div>
