@@ -14,7 +14,7 @@ function Repos() {
                     <div>
                         {userRepos.map(
                             (repo) => (
-                                <div style={{display: 'flex', color: 'black'}} key={repo.id}>
+                                <div className="repo-card" key={repo.id}>
                                     <button onClick={() => navigate(`/user/repo/${repo.name}`)}>click</button>
                                     <p>{repo.name}</p>                                    
                                 </div>
