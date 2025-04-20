@@ -97,19 +97,11 @@ function Users() {
                             </div>
                             <p>Branches</p>
                         </div>
-                        <div className="summary-pr">
-                            <div>
-                                <div className="dados">
-                                    {statistcs?.prs_abertas}
-                                </div>
-                                <p>PR Abertas</p>
+                        <div style={{textAlign: 'center' }}>
+                            <div className="dados">
+                                {statistcs?.prs_total}
                             </div>
-                            <div>
-                                <div className="dados">
-                                    {statistcs?.prs_fechadas}
-                                </div>
-                                <p>PR Fechadas</p>
-                            </div>
+                            <p>Totais PRs</p>
                         </div>
                     </div>
                 </div>
@@ -119,7 +111,7 @@ function Users() {
                         <div className="grafics1-user">
                             <h2>Quantidade de Commits por Repositório</h2>
                             <div className="grafics3-user">
-                            <img src={graphic} style={{height:'300px'}}/> 
+                                <img src={graphic} style={{height:'300px'}}/> 
                             </div>
                         </div>
                         

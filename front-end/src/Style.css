@@ -47,6 +47,21 @@ button {
     gap: 200px;
 
 }
+
+.pdf-repo {
+  font-size: 14px;
+  cursor: pointer;
+  color: #f9faf9; 
+  border: none; 
+  background-color: #63027C;
+  width: 140px; 
+  height: 30px;
+  top: 540px;
+  left: 670px;
+  border-radius: 200px;
+  gap: 200px;
+
+}
   
 button:hover {
     background-color: #565656; 
@@ -66,6 +81,17 @@ button:hover {
   color: rgb(248, 248, 248);
   height: 100vh;
   box-sizing: border-box;
+}
+
+.pdf-sidebar{
+  background: none;
+  border: none;
+  color: white;
+  margin: 0.5rem 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  
 }
 
 
@@ -119,8 +145,32 @@ h2{
 
 }
 
+
+.statistics-repo-title {
+  font-size: 35px;
+  font-weight: bold;
+  color: #63027C;
+  text-align: center;
+  margin-bottom: 2rem;
+  
+}
+
+.title-infos{
+  font-size: 1.4rem; 
+  color: #63027C
+}
+
 div{
   color: black;
+}
+
+.date{
+  direction: rtl;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  gap: 8px;
 }
 
 .user{
@@ -168,26 +218,6 @@ b.dados{
   height: 100vh;
   width: 260vh;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*Sidebar */
 
@@ -252,6 +282,7 @@ b.dados{
   font-weight: 500;
   display: flex;
   justify-content: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .link-search {
@@ -347,13 +378,16 @@ b.dados{
 .grafics1-user {
   padding: 1.2rem;
   margin-left: 10px;
+  width: 725px;
 }
 
-
-.grafics3-user{
-  
-  box-sizing: border-box;
-  
+.graphics1-repo {
+  padding: 1.2rem;
+  margin-left: 10px;
+  width: 500px;
+  font-size: 18px;
+  color: #63027C;
+  text-align: center;
 }
 
 .grafics3-user {
@@ -368,7 +402,9 @@ b.dados{
   flex: 1 1 300px;
   min-width: auto;
   max-width: 100%;
-  padding: 1.5rem;
+  /* padding: 18px; */
+  padding-left: 24px;
+  padding-top: 2px;
   margin-top: 10%;
 }
 
@@ -414,8 +450,16 @@ b.dados{
   background-color: #d9d9d9;
   gap: 8px;
   overflow-y: auto;
-  max-height: 380px;
+  max-height: 600px;
   width: 380px;
+}
+
+.list-repos-statis{
+  background-color: #d9d9d9;
+  gap: 8px;
+  padding: 12px;
+  overflow-y: auto;
+  max-height: 250px;
 }
 
 
@@ -515,14 +559,17 @@ b.dados{
   margin-bottom: 2rem;
 }
 
+
 .repo-statistics{
   display: flex;
   flex-direction: column;
   padding: 16px;
   color: rgb(121, 116, 116);
   gap: 16px;
-  height: 100%;
+  height: 885px;
   margin-left: 210px;
   background-color: white;
    
 }
+
+

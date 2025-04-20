@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { getRepoGraphCommits, getReposPdf, getRepoStatistics } from "../API/API"
 import { useUser } from "../Context/UserContext"
 import { useEffect, useState } from "react"
+import Loading from "../assets/Loading.webp"
 
 
 function StatisticRepo() {
@@ -25,6 +26,15 @@ function StatisticRepo() {
         getData()
     }, [])
 
+    if (load){
+        return (
+            <div className="user, center-container">
+                <h1>Carregando</h1>
+                <img src={Loading} width="50" height="50"/>
+            </div>
+         )
+    }
+
     const handleExportPDF = () => {
         getReposPdf(userData.login,repo)
       };
@@ -40,56 +50,70 @@ function StatisticRepo() {
 
     return (
         <div className="repo-statistics">
+            <div style={{direction: 'rtl', display: 'flex'}}><button className= "pdf-repo" onClick={handleExportPDF}>PDF Repositório</button></div>
             <div>
-                <h2 className="statistics-title">{repo}</h2>
-                <button onClick={handleExportPDF}>PDF Repositório</button>
+                <h2 className="statistics-repo-title">{repo}</h2>
             </div>
-            <h3>Ultimo Update</h3>
-            <h3>{formatted}</h3>
+            <div className="date">
+                <h3>:Ultimo Update</h3>
+                <h3>{formatted}</h3>
+            </div>
             <div className="summary-user">
                 <div>
-                    <p>{infos?.estrelas}</p>
+                    <div className="dados">{infos?.estrelas}</div>
                     <p>Estrelas</p>
                 </div>
                 <div>
-                    <p>{infos?.forks}</p>
+                    <div className="dados">{infos?.forks}</div>
                     <p>Forks</p>
                 </div>
                 <div>
-                    <p>{infos?.watchers}</p>
+                    <div className="dados">{infos?.watchers}</div>
                     <p>Watchers</p>
                 </div>
                 <div>
-                    <p>{infos?.tamanho}</p>
+                    <div className="dados" style={{fontSize: '12px'}}>{infos?.tamanho}</div>
                     <p>Tamanho</p>
                 </div>
 
             </div>
-            <div>
-                <p>Grafico Commit por data</p>
-                <img src={graphic} style={{ height: '280px' }} />
-            </div>
-            <div>
-                <p>Linguagens</p>
-                <p>{infos?.linguagens_repo.map(
-                    (ling, index) => (
-                        <div style={{ color: 'black' }} key={index}>
-                            <p>{ling}</p>
+            <div style={{display: 'flex', justifyContent: 'space-around'}}>
+                <div className="graphics1-repo">
+                    <h2 className="statistics-repo-title">Grafico Commit por data</h2>
+                    <div className="grafics3-user">
+                        <img src={graphic} style={{ height: '280px' }} /> 
+                    </div>
+                    
+                </div>
+                <div style={{display: 'grid'}}>
+                    <div>
+                        <h2 className="title-infos">Linguagens</h2>
+                        <div className="list-repos-statis">
+                           <p>{infos?.linguagens_repo.map(
+                                (ling, index) => (
+                                <div style={{ color: 'black' }} key={index}>
+                                    <p>{ling}</p>
+                                </div>
+                                ))}
+                            </p> 
                         </div>
-                    ))}
-                </p>
-            </div>
-            <div>
-                <p>Top Contribuidores</p>
-                <p>
-                    {infos?.contribuidores?.length>0?infos?.contribuidores.map(
-                        (contri, index) =>(
-                            <div key={index}>
-                                <p>{contri}</p>
-                            </div>
-                        )
-                    ):"Sem Contribuidores"}
-                </p>
+                    </div>
+                    <div>
+                        <h2 className="title-infos">Top Contribuidores</h2>
+                        <div className="list-repos-statis">
+                            <p>
+                                {infos?.contribuidores?.length>0?infos?.contribuidores.map(
+                                    (contri, index) =>(
+                                        <div key={index}>
+                                            <p>{contri}</p>
+                                        </div>
+                                    )
+                                ):"Sem Contribuidores"}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
 
         </div>
