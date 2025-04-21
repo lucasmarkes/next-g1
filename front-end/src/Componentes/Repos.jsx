@@ -1,3 +1,5 @@
+//Componente resposável por apresentar cards com repositórios
+// para direcionar o usuário as estatísticas do repositório escolhido
 import { useNavigate } from "react-router-dom"
 import { useUser } from "../Context/UserContext"
 

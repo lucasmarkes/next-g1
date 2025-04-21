@@ -14,6 +14,7 @@ function Users() {
     const {userData} = useUser()
     const {userRepos} = useUser()
     
+    //Nesse trecho, temos as funções que estabelecerão as comunicações com as APIs com gráficos e informações estatísticas
     const [statistcs, setStatistics] = useState()
     const [load, setLoad] = useState()
     const [graphic, setGraphic] = useState()
@@ -32,6 +33,8 @@ function Users() {
     }, [])
 
     console.log(statistcs, graphic)
+    
+    //Esse trecho, é uma função para aguardar o carregamento das info do API do back-end
     if (load){
         return (
             <div className="user, center-container">
@@ -41,6 +44,7 @@ function Users() {
          )
     }
 
+    //Esse trecho, é uma função caso haja erro de comunicação no API do FastAPI do back-end
     if((statistcs === undefined || graphic === undefined) || (statistcs.detail || graphic.detail)){
         return(
             <div className="user, center-container">
@@ -53,7 +57,6 @@ function Users() {
     return(
         <div>
             <div className="user">
-                {/* {load && <img src={Loading} width="100" height="100"/>} */}
                 <div>
                     <h2 className="statistics-title">Estatística do Usuário</h2>
                     <div className="summary-user" >
@@ -97,19 +100,11 @@ function Users() {
                             </div>
                             <p>Branches</p>
                         </div>
-                        <div className="summary-pr">
-                            <div>
-                                <div className="dados">
-                                    {statistcs?.prs_abertas}
-                                </div>
-                                <p>PR Abertas</p>
+                        <div style={{textAlign: 'center' }}>
+                            <div className="dados">
+                                {statistcs?.prs_total}
                             </div>
-                            <div>
-                                <div className="dados">
-                                    {statistcs?.prs_fechadas}
-                                </div>
-                                <p>PR Fechadas</p>
-                            </div>
+                            <p>Totais PRs</p>
                         </div>
                     </div>
                 </div>
@@ -119,7 +114,7 @@ function Users() {
                         <div className="grafics1-user">
                             <h2>Quantidade de Commits por Repositório</h2>
                             <div className="grafics3-user">
-                            <img src={graphic} style={{height:'300px'}}/> 
+                                <img src={graphic} style={{height:'300px'}}/> 
                             </div>
                         </div>
                         

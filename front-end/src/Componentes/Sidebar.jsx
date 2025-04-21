@@ -33,7 +33,7 @@ const NovoSidebar = () => {
         Repositórios
       </Link>
 
-      <button onClick={handleExportPDF} style={buttonStyle}>
+      <button onClick={handleExportPDF} className='pdf-sidebar'>
         <FaFilePdf style={{ marginRight: '10px' }} />
         Exportar PDF
       </button>
@@ -56,6 +56,7 @@ const buttonStyle = {
   fontWeight: 500,
   cursor: 'pointer',
   whiteSpace: 'nowrap',
+    
 };
 
 export default NovoSidebar;

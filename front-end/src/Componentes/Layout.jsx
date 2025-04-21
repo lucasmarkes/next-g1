@@ -1,3 +1,4 @@
+// componente responsável por estabelecer a sidebar fixa e servindo de navegação na aplicação
 import { Outlet } from 'react-router-dom';
 import NovoSidebar from './Sidebar';
 

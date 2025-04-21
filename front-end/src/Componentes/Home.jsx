@@ -12,6 +12,7 @@ function Home() {
 
     const navigate = useNavigate()
 
+    // Função para gerar a pesquisa e comunicação com os demais componentes
     const handleSearch = async () => {
         try {
             const response = await getUser(user)
@@ -29,7 +30,6 @@ function Home() {
         <>
             <div className="App">
                 <img src={logo} width='350'/>
-                {/* <h1 style={{color: '#64027c'}}>Retrospecgit</h1> */}
                 <h1>
                     <input
                         type="text"

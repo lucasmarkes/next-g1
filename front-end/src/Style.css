@@ -1,57 +1,4 @@
-html, body, #root {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background:rgb(16, 32, 45);
-}
-
-#logo {
-    width: 355px;
-    height: 243px;
-    top: 198px;
-    left: 542px;
-}
-h1 {
-    color: rgb(248, 245, 245); 
-    
-}.search-container {
-    width: 320px;
-    height: 40px;
-    top: 462px;
-    left: 540px;
-    border-radius: 28px;
-    gap: 4px;
-    text-align: center;
-    background-color: #f6effa;
-    border-color: #f6effa;
-    
-}
-.barra-lateral{
-    width: 300px;
-    height: 1024px;
-    color: #64027c;
-} 
-
-  
-button {
-    font-size: 16px;
-    cursor: pointer;
-    color: #f9faf9; 
-    border: none; 
-    background-color: #63027C;
-    width: 100px; 
-    height: 30px;
-    top: 540px;
-    left: 670px;
-    border-radius: 200px;
-    gap: 200px;
-
-}
-  
-button:hover {
-    background-color: #565656; 
-    color: rgb(248, 245, 245)
-}
+/*Home */
 
 .App {
   display: flex;
@@ -68,125 +15,44 @@ button:hover {
   box-sizing: border-box;
 }
 
-
-p {
-    color:#0c0c0c
-
-}.language{
-    color: #f9faf9;
-    background-color: #08022b;
-}
-.texto-lateral{
-    font-weight: 700;
-    font-size: 12px;
-    text-align: center;
-    vertical-align: middle;
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background:rgb(16, 32, 45);
 }
 
-
-  .container-flex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .caixa {
-    width: 80px;
-    height: 80px;
-    background-color: rgb(116, 110, 110);
-    border-radius: 8px;
-    box-shadow: 0 0 10pxrgba(100, 2, 124, 1);
-  }
-  
-  .titulo {
-    margin-top: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    color:rgba(100, 2, 124, 1);
-  }
-  
-  .circulo {
-    width: 80px;
-    height: 80px;
-    background-color:rgb(136, 92, 92);
-    border-radius: 50px;
-  }
-  
-
-
-h2{
-  color: black;
-
+#logo {
+  width: 355px;
+  height: 243px;
+  top: 198px;
+  left: 542px;
+}
+    
+.search-container {
+  width: 320px;
+  height: 40px;
+  top: 462px;
+  left: 540px;
+  border-radius: 28px;
+  gap: 4px;
+  text-align: center;
+  background-color: #f6effa;
+  border-color: #f6effa; 
 }
 
-div{
-  color: black;
+button {
+  font-size: 16px;
+  cursor: pointer;
+  color: #f9faf9; 
+  border: none; 
+  background-color: #63027C;
+  width: 100px; 
+  height: 30px;
+  top: 530px;
+  left: 670px;
+  border-radius: 200px;
 }
-
-.user{
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  color: rgb(255, 255, 255);
-  gap: 16px;
-  background-color: white;
-  margin-left: 210px;
-} 
-
-
-h1{
-  color: black;
-
-} 
-
-img {
-  color: black;
-
-}
-
-b.dados{
-  background-clip: padding-box;
-  background-position: 50%;
-  display: inline-block;
-  border-color: black;
-  border-radius: 75%;
-  height: 18px;
-  width: 18px;
-  background-color: white;
-  text-align: center ;
-  vertical-align: baseline;
-  /* position: relative;
-  top: 20px; */
-   
-}
-
-.center-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 260vh;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*Sidebar */
@@ -252,6 +118,7 @@ b.dados{
   font-weight: 500;
   display: flex;
   justify-content: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .link-search {
@@ -264,15 +131,28 @@ b.dados{
   justify-content: flex-start;
 }
 
+.pdf-sidebar{
+  background: none;
+  border: none;
+  color: white;
+  margin: 0.5rem 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
 
 
 /*Tela-Perfil */
 
-.user {
+.user{
+  display: flex;
+  flex-direction: column;
   padding: 2rem;
-  background-color: #f5f5f5;
-  min-height: 100vh;
-}
+  color: rgb(255, 255, 255);
+  gap: 16px;
+  background-color: white;
+  margin-left: 210px;
+} 
 
 .center-container {
   display: flex;
@@ -280,8 +160,16 @@ b.dados{
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 260vh;
 }
 
+.statistics-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #63027C;
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
 .summary-user {
   display: grid;
@@ -312,6 +200,9 @@ b.dados{
   margin: auto;
 }
 
+div{
+  color: black;
+}
 
 .summary-pr {
   display: grid;
@@ -332,9 +223,7 @@ b.dados{
   flex-direction: column;
   gap: 5rem;
   padding: 2rem;
-
 }
-
 
 .grafics-user {
   display: flex;
@@ -347,13 +236,7 @@ b.dados{
 .grafics1-user {
   padding: 1.2rem;
   margin-left: 10px;
-}
-
-
-.grafics3-user{
-  
-  box-sizing: border-box;
-  
+  width: 725px;
 }
 
 .grafics3-user {
@@ -361,14 +244,15 @@ b.dados{
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  
 }
 
 .grafics2-user {
   flex: 1 1 300px;
   min-width: auto;
   max-width: 100%;
-  padding: 1.5rem;
+  padding: 18px; 
+  padding-left: 24px;
+  padding-top: 2px;
   margin-top: 10%;
 }
 
@@ -401,7 +285,6 @@ b.dados{
   text-align: center;
 }
 
-
 .repo-user {
   width: 375px;
   position: absolute;
@@ -409,19 +292,21 @@ b.dados{
   margin-top: 20px;
 }
 
-
 .list-repos-user{
   background-color: #d9d9d9;
   gap: 8px;
   overflow-y: auto;
-  max-height: 380px;
+  max-height: 600px;
   width: 380px;
 }
 
-
-
-
-
+.list-repos-statis{
+  background-color: #d9d9d9;
+  gap: 8px;
+  padding: 12px;
+  overflow-y: auto;
+  max-height: 250px;
+}
 
 
 /*Tela-Repositório */
@@ -474,8 +359,6 @@ b.dados{
   justify-content: center; 
   text-align: center; 
   transition: transform 0.2s ease;
-  
- 
 }
 
 .repo-card:hover {
@@ -502,27 +385,69 @@ b.dados{
   font-size: 1rem;
   color: #fff; 
   word-break: break-word;
-  
 }
 
 /*Tela-statisticRepo*/
 
-.statistics-title {
-  font-size: 2rem;
+.pdf-repo {
+  font-size: 14px;
+  cursor: pointer;
+  color: #f9faf9; 
+  border: none; 
+  background-color: #63027C;
+  width: 140px; 
+  height: 30px;
+  top: 540px;
+  left: 670px;
+  border-radius: 200px;
+  gap: 200px;
+}
+  
+button:hover {
+    background-color: #565656; 
+    color: rgb(248, 245, 245)
+}
+
+.statistics-repo-title {
+  font-size: 30px;
   font-weight: bold;
   color: #63027C;
   text-align: center;
   margin-bottom: 2rem;
 }
 
+.title-infos{
+  font-size: 1.4rem;
+  color: #63027C;
+  text-align: center;
+}
+
+.date{
+  direction: rtl;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  gap: 8px;
+}
+
+.graphics1-repo {
+  padding: 1.2rem;
+  margin-left: 10px;
+  width: 500px;
+  font-size: 18px;
+  color: #63027C;
+  text-align: center;
+  margin-top: 70px;
+}
 .repo-statistics{
   display: flex;
   flex-direction: column;
   padding: 16px;
   color: rgb(121, 116, 116);
   gap: 16px;
-  height: 100%;
   margin-left: 210px;
   background-color: white;
-   
 }
+
+
