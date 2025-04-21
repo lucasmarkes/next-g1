@@ -1,3 +1,4 @@
+// função para extrair info básicas do usuário
 export const getUser = async (user) => {
     try { 
         const data = await fetch(`https://api.github.com/users/${user.trim()}`)
@@ -7,6 +8,7 @@ export const getUser = async (user) => {
     }
 }
 
+// função para extrair info básicas dos repositórios do usuário
 export const getRepos = async (user) => {
     try { 
         const data = await fetch(`https://api.github.com/users/${user.trim()}/repos`)
@@ -16,6 +18,7 @@ export const getRepos = async (user) => {
     }
 }
 
+// função para extrair estatísticas básicas do usuário
 export const getUserStatistics = async (user) => {
     try { 
         const data = await fetch(`http://127.0.0.1:8000/github/${user.trim()}`)
@@ -25,6 +28,7 @@ export const getUserStatistics = async (user) => {
     }
 }
 
+// função para extrair estatísticas básicas de um repositório específico do usuário
 export const getRepoStatistics = async (user, repo) => {
     try { 
         const data = await fetch(`http://127.0.0.1:8000/github/${user}/${repo}`)
@@ -34,6 +38,7 @@ export const getRepoStatistics = async (user, repo) => {
     }
 }
 
+// função para extrair gráfico de commits de um repositório específico do usuário
 export const getRepoGraphCommits = async (owner, repo) => {
     try { 
         const data = await fetch(`http://127.0.0.1:8000/grafico/${owner}/${repo}`)
@@ -44,6 +49,7 @@ export const getRepoGraphCommits = async (owner, repo) => {
     }
 }
 
+// função para extrair gráfico de commits do usuário
 export const getUserGraphCommits = async(user) =>{
     try { 
         const data = await fetch(`http://127.0.0.1:8000/grafico/${user.trim()}`)
@@ -54,6 +60,7 @@ export const getUserGraphCommits = async(user) =>{
     }
 }
 
+// função para gerar relatório em pdf do usuário
 export const getUserPdf = async(user) =>{
     try { 
         const data = await fetch(`http://127.0.0.1:8000/relatorio/${user.trim()}`)
@@ -71,6 +78,7 @@ export const getUserPdf = async(user) =>{
     }
 }
 
+// função para gerar relatório em pdf de um repositório específico do usuário
 export const getReposPdf = async(user, repo) =>{
     try { 
         const data = await fetch(`http://127.0.0.1:8000/relatorio/${user.trim()}/${repo}`)

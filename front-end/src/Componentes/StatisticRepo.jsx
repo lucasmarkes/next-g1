@@ -1,3 +1,4 @@
+//Componente que apresenta as informações estatísticas do repositório escolhido no componente Repos
 import { useParams } from "react-router-dom"
 import { getRepoGraphCommits, getReposPdf, getRepoStatistics } from "../API/API"
 import { useUser } from "../Context/UserContext"
@@ -11,6 +12,7 @@ function StatisticRepo() {
 
     const { userData } = useUser()
 
+    //Nesse trecho, temos as funções que estabelecerão as comunicações com as APIs com gráficos e informações estatísticas
     const [graphic, setGraphic] = useState()
     const [infos, setInfos] = useState()
     const [load, setLoad] = useState()
@@ -35,6 +37,7 @@ function StatisticRepo() {
          )
     }
 
+    //Essa função gera o relatório pdf do repositório
     const handleExportPDF = () => {
         getReposPdf(userData.login,repo)
       };
