@@ -79,7 +79,7 @@ function StatisticRepo() {
             </div>
             <div style={{display: 'flex', justifyContent: 'space-around'}}>
                 <div className="graphics1-repo">
-                    <h2 className="statistics-repo-title">Grafico Commit por data</h2>
+                    <h2 className="title-infos">Grafico Commit por data</h2>
                     <div className="grafics3-user">
                         <img src={graphic} style={{ height: '280px' }} /> 
                     </div>
