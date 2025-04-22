@@ -193,11 +193,12 @@ button {
   display: flex;                
   align-items: center;         
   justify-content: center;     
-  font-size: 1.5rem;
+  font-size: medium;
   font-weight: bold;
   color: #333;
   border: 1px solid #63027C;
   margin: auto;
+  text-align: center;
 }
 
 div{

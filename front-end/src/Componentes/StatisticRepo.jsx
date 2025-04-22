@@ -75,7 +75,7 @@ function StatisticRepo() {
                     <p>Watchers</p>
                 </div>
                 <div>
-                    <div className="dados" style={{fontSize: '12px'}}>{infos?.tamanho}</div>
+                    <div className="dados" style={{fontSize: 'smaller'}}>{infos?.tamanho}</div>
                     <p>Tamanho</p>
                 </div>
 
