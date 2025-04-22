@@ -58,9 +58,9 @@ def gerar_pdf_user(usuario: str,nome_arquivo: str = "") -> str:
 
     pdf.ln(10)
     pdf.set_font("Arial", "B", 10)
-    pdf.cell(200,10, "NOTA")
+    pdf.cell(200,10, "NOTA", ln=True)
     pdf.set_font("Arial", "", 10)
-    pdf.cell(200, 10, "As estattísticas são coletadas somente a partir das informações públicas do GitHub", ln=True)
+    pdf.cell(200, 10, "As estatísticas são coletadas somente a partir das informações públicas do GitHub", ln=True)
     pdf.cell(200, 10, "Considere também que há limites de requisições permitidas ou suportadas pela API", ln=True)
     pdf.cell(200, 10, "Equipe RetrospectGit agradece a sua visita!", ln=True)
 
